@@ -1,0 +1,106 @@
+% \VignetteIndexEntry{splicegear Introduction}
+%\VignetteDepends{splicegear, Biobase}
+%\VignetteKeywords{Expression Analysis}
+%\VignettePackage{splicegear}
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,pstricks}
+\usepackage[authoryear,round]{natbib}
+\usepackage{hyperref}
+
+
+\textwidth=6.2in
+\textheight=8.5in
+%\parskip=.3cm
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+
+\newcommand{\scscst}{\scriptscriptstyle}
+\newcommand{\scst}{\scriptstyle}
+
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\textit{#1}}}
+\newcommand{\Rmethod}[1]{{\texttt{#1}}}
+\newcommand{\Rfunarg}[1]{{\texttt{#1}}}
+\newcommand{\Rclass}[1]{{\textit{#1}}}
+
+\bibliographystyle{plainnat}
+
+\begin{document}
+
+\section*{Introducing splicegear}
+
+Microarrays have become an established technique for the analysis of gene expression.
+With the advances in numerical processing of the data, the lowering of the
+costs and well defined experimental protocols, the reliability of data analysis
+has increased. The possiblity to study alternative splicing using microarrays has
+appeared very recently in experimental publications. The word is now 'this is possible',
+and it has been reported for spotted oligonucleotides arrays, for
+printed arrays and for arrays made by the {\it Affymetrix} company. 
+However little has been done to quantify how well the
+technique performs, how the existing oligonucleotide data could have been influenced
+by alternative phenomenon and how it could contribute to discover novel splice variants.
+This package defines classes to handle probe expression values in an alternative splicing
+context.
+
+The class \Robject{SpliceExprSet} combines information about putative
+splice sites on a sequence with probes matching the sequence and
+corresponding probe intensities. It it constituted of three
+attributes, \Robject{eset}, \Robject{probes} and
+\Robject{spliceSites}, the first being of class \Robject{exprSet} 
+the second of class \Robject{Probes} and the
+third of class \Robject{SpliceSites}. The underlying concept behind the
+clear separation between splice site positions, probes and probe intensities
+is the dynamic nature of their relationship. While the sequence for
+the probe is fixed, the target sequences can vary slightly and the
+position or presence of splice sites as well (especially when working with
+putative splice sites).
+
+The package is loaded by a simple call of \Rfunction{library}:x
+<<R.hide, results=hide, echo=FALSE>>=
+library(splicegear)
+@
+
+\section*{Plotting methods}
+
+Plotting methods are defined for the classes \Robject{SpliceSites} and \Robject{SpliceExprSet}.
+
+Exact matching of the reference sequences used by the database of
+putative splice sites against the probes of {\it Affymetrix} {\tt U95A} chips were performed.
+The expression values from the {\it GeneLogic} `Dilution' dataset
+(RNA extracted from cells from the central nervous system and from the
+liver) were observed.
+
+<<<>>=
+data(spsites.Hs.44)
+
+print(spsites.Hs.44)
+
+plot(spsites.Hs.44)
+@ 
+
+\section*{data in `data.frame'}
+The \Rclass{data.frame} has a very important role in the S
+language. A large number of function are designed around this data
+structure. We provide a way to link the class \Robject{SpliceExprSet}
+with this data structure.
+
+<<fig=TRUE>>=
+data(spliceset.Hs.44)
+
+dataf <- as.data.frame.SpliceExprSet(spliceset.Hs.44)
+
+lm.panel <- function(x, y, ...) {
+                                  points(x,y,...)
+                                  p.lm <- lm(y~x); abline(p.lm)
+                                }
+
+## probe intensity values conditioned by the position of the probes on
+## the mRNA
+coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
+
+@
+
+\end{document}
