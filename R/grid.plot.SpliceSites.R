@@ -17,8 +17,8 @@ grid.plot.SpliceSites <- function(x, col.typeI="orange", col.typeI.window="yello
     vp <- viewport(xscale = xlim, yscale = ylim, w=0.9, h=0.9)
     grid.xaxis(vp = vp, main=FALSE)
   } else {
-    push.viewport(vp)
-    on.exit(pop.viewport())
+    pushViewport(vp)
+    on.exit(popViewport())
     vp <- viewport(xscale = xlim, yscale = ylim)
   }
   

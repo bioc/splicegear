@@ -1,6 +1,8 @@
 
 plot.Probes <- function(x,
                         col="black",
+                        xlab="sequence",
+                        ylab="probes",
                         add=FALSE,
                         probepos.yscale=NULL, xlim=NULL, ...) {
 
@@ -27,7 +29,7 @@ plot.Probes <- function(x,
     ylim <- range(ypos, 0)
     
     plot(x=0, y=0,
-         xlab="seq", ylab="probes",
+         xlab=xlab, ylab=ylab,
          xlim=xlim, ylim=ylim,
          type="n", ...)
     

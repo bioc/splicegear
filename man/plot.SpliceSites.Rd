@@ -6,11 +6,14 @@
   plot objects.
 }
 \usage{
-plot.Probes(x, col="black", add=FALSE,
-            probepos.yscale=NULL, xlim=NULL, ...)
-plot.SpliceSites(x, col.typeI = "greenyellow", col.typeI.window =
-                 "yellow", col.typeII = "red", add = FALSE, ylim =
-                 NULL, ...)
+plot.Probes(x, col="black",
+            xlab = "sequence", ylab = "probes",   
+            add=FALSE, probepos.yscale=NULL, xlim=NULL,
+            ...)
+plot.SpliceSites(x, col.typeI = "orange",
+            col.typeI.window = "yellow",
+            col.typeII = "red",
+            add=FALSE, ylim=NULL, ...)
 }
 \arguments{
   \item{x}{ object of class \code{Probes} or \code{SpliceSites}. }
@@ -20,8 +23,8 @@ plot.SpliceSites(x, col.typeI = "greenyellow", col.typeI.window =
   \item{col.typeII}{ color argument for the type II splice sites }
   \item{add}{ add the plot to an existing plot. Make a new plot if `FALSE'}
   \item{probepos.yscale}{ scaling argument }
-  \item{xlim}{range of plotting window}
-  \item{ylim}{range of plotting window}
+  \item{xlim, ylim}{range of plotting window}
+  \item{xlab, ylab}{labels for the axis}
   \item{\dots}{ optional parameters to be passed to the function \code{plot}. }
 }
 \details{

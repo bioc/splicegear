@@ -22,7 +22,7 @@ grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
                         default.units = "npc",
                         respect = matrix(c(1, 1), 2, 2))
   temp.vp <- viewport(layout = top.lt)
-  push.viewport(temp.vp)
+  pushViewport(temp.vp)
 
   panel.vp <- viewport(layout.pos.row = 2, layout.pos.col = 1)  
   grid.plot(spSites, vp=panel.vp, add=TRUE)
@@ -67,7 +67,7 @@ grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
   gp <- grid.expand.gp(nrow(exprs(eset)), parlist=expr.opt)
 
   panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 2)
-  push.viewport(panel.vp)
+  pushViewport(panel.vp)
   vp <- viewport(xscale = xlim, yscale = ylim)
   for (i in seq(1, nrow(exprs(eset)), length=nrow(exprs(eset))))
     grid.lines(exprs(eset)[i, ], ypos,

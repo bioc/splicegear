@@ -105,8 +105,8 @@ setMethod("grid.plot",
               figscale <- 0.9 
               ##vp <- viewport(xscale = xlim, yscale = ylim, w=0.9, h=0.9)
             } else {
-              push.viewport(vp)
-              on.exit(pop.viewport())
+              pushViewport(vp)
+              on.exit(popViewport())
               figscale <- 1
             }
             
@@ -116,7 +116,7 @@ setMethod("grid.plot",
                                   respect = matrix(c(1, 1), 2, 1))
             
             temp.vp <- viewport(layout = top.lt)
-            push.viewport(temp.vp)
+            pushViewport(temp.vp)
 
             ##spliceSites
             panel.vp <- viewport(layout.pos.row = 2, layout.pos.col = 1)

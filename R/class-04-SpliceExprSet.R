@@ -132,8 +132,10 @@ isProbeOnSpliceSite <- function(probes, spSites) {
                         spSites@spsiteIIpos)
   else
     isintypeII <- rep(FALSE, nrow(probes@pos))
-
-  return(isintypeI=isintypeI, isintypeII=isintypeII)
+  
+  r <- list(isintypeI=isintypeI, isintypeII=isintypeII)
+  
+  return(r)
 }
 
 ## HOWTO:
