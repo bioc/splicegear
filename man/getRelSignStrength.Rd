@@ -1,7 +1,7 @@
 \name{getRelSignStrength}
 \alias{getRelSignStrength}
 \alias{getFinalRatio}
-\title{ ~~ functions to perform SPLICE ~~ }
+\title{ functions to perform SPLICE }
 \description{
   Implementations of the SPLICE algorithm
 }
@@ -16,8 +16,8 @@ getFinalRatio(x, tissue=as.factor(1:ncol(x)), fun=mean, ...)
     of class \code{ExprSet}.}
   \item{tissue}{ a covariate (factor) about the samples.}
   \item{fun}{ a function to obtain a summary value (\code{mean} by default) }
-  \item{nipt}{ ~~Describe \code{nipt} here~~ }
-  \item{nitt}{ ~~Describe \code{nitt} here~~ }
+  \item{nipt}{ see reference. }
+  \item{nitt}{ see reference. }
   \item{\dots}{ optional parameters for the function \code{fun} }
 }
 \details{

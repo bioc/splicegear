@@ -2,7 +2,7 @@
 \docType{class}
 \alias{SpliceExprSet-class}
 \alias{spliceSites}
-\title{Class "SpliceExprSet" ~~~ }
+\title{Class "SpliceExprSet"}
 \description{ A class to store probe expression values with alternative
   splicing information}
 \section{Objects from the Class}{
