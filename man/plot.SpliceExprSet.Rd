@@ -45,6 +45,8 @@ cl.mat <- c("red", "yellow","blue")[as.integer(pData(spliceset@eset)$Material)]
 ## colored in red, yellow and blue respectively
 plot(spliceset, expr.opt = list(col = cl.mat, log = "x"))
 
+## sort
+spliceset <- sort.SpliceExprSet(spliceset)
 begin.pos <- spliceset@probes@pos[, 1]
 plot(spliceset, expr.opt = list(col=cl.mat), probepos.yscale = begin.pos)
 

@@ -44,11 +44,12 @@ plot.SpliceExprSet <- function(x, probes.opt = list(),
   npar.mar[2] <- 1
   par(mar=opar.mar)
 
-  ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
+  ## useless for now
+  ##ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
   xlim <- c(0, spSites@seq.length)
 
   do.call("matplot", c(list(exprs(eset), matrix(ypos, ncol=1),
-                            ylim=ylim,
+                            ylim=m.ylim,
                             xlab="expression", ylab="probes",
                             type="l"), expr.opt))
   ##overlay typeI
