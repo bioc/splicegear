@@ -8,10 +8,9 @@
 \usage{
 plot.Probes(x, col="black", add=FALSE,
             probepos.yscale=NULL, xlim=NULL, ...)
-plot.SpliceSites(x, col.typeI = "greenyellow",
-            col.typeI.window = "yellow",
-            col.typeII = "red",
-            add=FALSE, ylim=NULL, ...)
+plot.SpliceSites(x, col.typeI = "greenyellow", col.typeI.window =
+                 "yellow", col.typeII = "red", add = FALSE, ylim =
+                 NULL, ...)
 }
 \arguments{
   \item{x}{ object of class \code{Probes} or \code{SpliceSites}. }

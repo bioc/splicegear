@@ -6,7 +6,7 @@
 }
 \usage{
 plot.SpliceSitesGenomic(x, col.variant = par("col"), col.exon = "white",
-                        split = FALSE, main = NULL, ...)
+                 split = FALSE, main = NULL, ...)
 }
 \arguments{
   \item{x}{ \code{SpliceSitesGenomic-class} }
