@@ -1,0 +1,12 @@
+as.data.frame.exprSet   converts an exprSet to a dataframe
+as.data.frame.SpliceExprSet
+                        convert to a data.frame
+buildSpliceSites        Functions to query PALSdb
+eset.Hs.44              ~~ data name/kind ... ~~
+getRelSignStrength      ~~ functions to perform SPLICE ~~
+plot.SpliceExprSet      ~~function to do ... ~~
+plot.SpliceSites        plot a SpliceSites object
+Probes-class            Class "Probes"
+SpliceExprSet-class     Class "SpliceExprSet" ~~~
+spliceset.Hs.44         Example data for splicegear
+SpliceSites-class       Class "SpliceSites"
