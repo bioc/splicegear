@@ -31,18 +31,17 @@ plot.SpliceExprSet(x, ...,
 
 \seealso{\code{\link{SpliceExprSet-class}} }
 \examples{
-data(spliceset.Hs.44)
+data(spliceset)
 
-speset <- spliceset.Hs.44
 
-levels(pData(speset@eset)$Material)
+levels(pData(spliceset@eset)$Material)
 ## Liver, Mix and SNB19
-cl.mat <- c("red", "yellow","blue")[as.integer(pData(speset@eset)$Material)]
+cl.mat <- c("red", "yellow","blue")[as.integer(pData(spliceset@eset)$Material)]
 ## colored in red, yellow and blue respectively
-plot(speset, expr.opt=list(col=cl.mat, log="x"))
+plot(spliceset, expr.opt=list(col=cl.mat, log="x"))
 
-begin.pos <- speset@probes@pos[,1]
-plot(speset, expr.opt=list(col=cl.mat), probespos.yscale=begin.pos)
+begin.pos <- spliceset@probes@pos[,1]
+plot(spliceset, expr.opt=list(col=cl.mat), probespos.yscale=begin.pos)
 
 }
 \keyword{ hplot }

@@ -35,9 +35,9 @@ In the case of \code{as.data.frame.SpliceExprSet}, the next variable names will 
 \author{ Laurent }
 
 \examples{
-data(spliceset.Hs.44)
+data(spliceset)
 
-dataf <- as.data.frame(spliceset.Hs.44)
+dataf <- as.data.frame(spliceset)
 
 lm.panel <- function(x, y, ...) {
                                   points(x,y,...)

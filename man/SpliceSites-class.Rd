@@ -46,26 +46,26 @@ Objects can be created by calls of the form \code{new("SpliceSites", ...)}.
 \seealso{ \code{\link{isSpliceSiteOnProbe}},
   \code{\link{isProbeOnSpliceSite}},
   \code{\link{plot.SpliceSites}},
-  \code{\link{spliceset.Hs.44}}.
+  \code{\link{spliceset}}.
 }
 
 \examples{
-data(spliceset.Hs.44)
+data(spliceset)
 
-print(spliceset.Hs.44)
+print(spliceset)
 
 par(mfrow=c(1,2))
 
-plot(spliceset.Hs.44, main="Hs.44")
+plot(spliceset, main=attr(spliceset, "name"))
 
 ## filter out supporting matches with unique positions
 filter.typeI <- function(x) {unique(x[duplicated(x), , drop=FALSE])}
-spliceset.Hs.44.filter <- spliceset.Hs.44
-sSites <- spliceset.Hs.44.filter@spliceSites
+spliceset.filter <- spliceset
+sSites <- spliceset.filter@spliceSites
 sSites@spsiteIpos <- filter.typeI(sSites@spsiteIpos)
-spliceset.Hs.44.filter@spliceSites <- sSites
+spliceset.filter@spliceSites <- sSites
 ## plot the resulting new object
-plot(spliceset.Hs.44.filter)
+plot(spliceset.filter)
 
 }
 \keyword{classes}

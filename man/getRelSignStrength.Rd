@@ -33,19 +33,18 @@ getFinalRatio(x, tissue=as.factor(1:ncol(x)), fun=mean, ...)
 \references{ Genome Research (2001), Hu et. al., vol. 11, p.1244 }
 \author{ laurent@cbs.dtu.dk }
 \examples{
-data(spliceset.Hs.44)
-speset <- spliceset.Hs.44
+data(spliceset)
 
 ## The intensity values in the example are log-transformed.
 ## Undo by taking the exponential
-exprs(speset) <- exp(exprs(speset))
+exprs(spliceset) <- exp(exprs(spliceset))
 
 ## Re-order the rows of different slots to have the probes sorted by
 ## position
-speset <- sort.SpliceExprSet(speset)
+spliceset <- sort.SpliceExprSet(spliceset)
 ## extract the expression matrix
-expr.m <- exprs(speset)
-fr <- getFinalRatio(expr.m, tissue=pData(speset@eset)[[1]])
+expr.m <- exprs(spliceset)
+fr <- getFinalRatio(expr.m, tissue=pData(spliceset@eset)[[1]])
 
 }
 \keyword{ manip }

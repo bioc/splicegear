@@ -1,6 +1,7 @@
 \name{buildSpliceSites}
 \alias{buildSpliceSites}
 \alias{queryPALSdb}
+\alias{getPALSdbURL}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Functions to query PALSdb }
 \description{
@@ -9,6 +10,13 @@
 }
 \usage{
 queryPALSdb(query, disp = c("data", "browser"),
+            field = c("keyword", "ug_id", "gb_id", "cluster_count"),
+            species = c("human", "mouse"),
+            e.value = "1e-1",
+            ident.threshold = c("90% 50b", "95% 50b", "90% 45b"),
+            verbose = FALSE)
+
+getPALSdbURL(query, disp = c("data", "browser"),
             field = c("keyword", "ug_id", "gb_id", "cluster_count"),
             species = c("human", "mouse"),
             e.value = "1e-1",
@@ -31,9 +39,16 @@ buildSpliceSites(xml)
 \details{
   \code{queryPALSdb} returns an an object of class XML when \code{disp =
     "data"}.
+
+  The function \code{buildSpliceSites} constructs \code{SpliceSites}
+  objects from the XML data. The variables in the slots
+  \code{spsiteIpos.pData} and \code{spsiteIIpos.pData} are at least
+  \code{tissue} (tissue information), \code{histology} and \code{site}
+  (site numbering).
 }
 \value{
-  
+  An object of class \code{XML} for \code{queryPALSdb}, an URL for
+  \code{getPALSdbURL} or a \code{list} of objects of class \code{SpliceSites}.
 }
 \references{"Standardazed output for putative alternative splicing: application to the study of 
 splice variants with microarrays", Gautier L. et al., 2003, manuscript

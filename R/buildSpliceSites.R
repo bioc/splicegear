@@ -1,68 +1,7 @@
-queryPALSdb <- function(query, disp = c("data", "browser"),
-                        field = c("keyword", "ug.id", "gb.id",
-                          "human.cytoband", "mouse.cytoband", "cluster_count"),
-                        species = c("human", "mouse"),
-                        e.value = "1e-1",
-                        ident.threshold = c("90% 50b", "95% 50b", "90% 45b"),
-                        verbose = FALSE) {
-
-  require(annotate, quietly=TRUE) || stop()
-  
-  ##url.base <- "http://140.129.151.131/cgi-bin/palsdb/big_xml.cgi"
-  url.base <- "http://140.129.151.155/~laurent/cgi-bin/palsdb/big_xml.cgi"
-
-  disp <- match.arg(disp)
-  field <- match.arg(field)
-  species <- match.arg(species)
-  ident.threshold <- match.arg(ident.threshold)
-  
-  format <- switch(disp,
-                   data="xml",
-                   browser="html")
-
-  field <- switch(field,
-                  keyword="A",
-                  ug.id="B",
-                  gb.id="C",
-                  human.cytoband="E",
-                  mouse.cytoband="F")
-
-  query.tag <- "keyword"
-  
-  ident.threshold <- switch(ident.threshold,
-                            "95% 45b"="A",
-                            "90% 50b"="B",
-                            "95% 50b"="C",
-                            "90% 45b"="D"
-                            )
-
-  url <- paste(url.base,
-               paste(paste("format", format, sep="="),
-                     paste(query.tag, query, sep="="),
-                     paste("field", field, sep="="),
-                     paste("species", species, sep="="),
-                     paste("evalue", e.value, sep="="),
-                     paste("constraint", ident.threshold, sep="="),
-                     "submit=Submit", ## ?!
-                     sep="&"),
-               sep="?")
-  if (verbose) {
-    print(url)
-  }
-  if (disp == "data") {
-    require(XML, quietly=TRUE) || stop("Library XML required !")
-    return(.handleXML(url))
-    ##return(paste(readLines(url(url)), collapse=""))
-  }
-  else {
-    browseURL(url)
-  }
-}
-
 buildSpliceSites <- function(xml, verbose=TRUE) {
 
   get.pData <- function(this.result, what) {
-    leaf <- this.result[["Lib-info"]][[what]]
+    leaf <- this.result[[what]]
     if (is.null(leaf)) {
       r <- NA
     } else {
@@ -71,9 +10,9 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     return(r)
   }
   
-  resultQuery <- xml$doc$children["PALSdbResultQuery"][[1]]
+  resultQuery <- xml$doc$children["ResultQuery"][[1]]
 
-  entries.i <- which(names(resultQuery) == "PALSdbEntry")
+  entries.i <- which(names(resultQuery) == "Entry")
 
   n.EST.hit <- sum(unlist(lapply(resultQuery[entries.i],
                                  function (x) length(names(x)) - 1)))
@@ -91,20 +30,21 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
   for (i in seq(along=entries.i)) {
     e.i <- entries.i[i]
 
-    entries.k <- which(names(resultQuery[[e.i]]) == "AS-info")
-    ug.id <- resultQuery[[e.i]][["Head-info"]][["ug-cluster-id"]]
+    entries.k <- which(names(resultQuery[[e.i]]) == "Alt-Splice")
+    ug.id <- resultQuery[[e.i]][["Reference-sequence"]][["ug-cluster-id"]]
     ug.id <- as.character(xmlChildren(ug.id)$text)[6]
-    seq.len <- resultQuery[[e.i]][["Head-info"]][["ref-len"]]
+    seq.len <- resultQuery[[e.i]][["Reference-sequence"]][["ref-len"]]
     seq.len <- as.integer(as.character(xmlChildren(seq.len)$text)[6])
 
     n.ASinfo <- sum(unlist(lapply(resultQuery[[e.i]][entries.k],
-                                 function(x) sum(names(x) == "AS-seq-info"))))
+                                 function(x) sum(names(x) == "Hit-info"))))
     spsiteIpos <- vector("list", length = n.ASinfo)
     spsiteIIpos <- vector("list", length = n.ASinfo)
     pData.tissue <- vector("character", length = n.ASinfo)
     pData.histology <- vector("character", length = n.ASinfo)
     pData.cellline <- vector("character", length = n.ASinfo)
     pData.site <- vector("character", length = n.ASinfo)
+    ##pData.other <- vector("list", length=n.ASinfo)
     j.offset <- 0
     
     if (verbose)
@@ -113,9 +53,25 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     for (k in seq(along=entries.k)) {
       e.k <- entries.k[k]
       
-      i.ASinfo <- names(resultQuery[[e.i]][[e.k]]) == "AS-seq-info"
+      i.ASinfo <- names(resultQuery[[e.i]][[e.k]]) == "Hit-info"
 
       entries.j <- which(i.ASinfo)
+
+      this.result <- resultQuery[[e.i]][[e.k]]
+      typeAS <- xmlAttrs(this.result)["Type"]
+      typeAS <- as.integer(typeAS)
+
+      if (typeAS == 1) {
+        pos.i <- which(names(this.result[["Site-info"]]) == "Pos")
+        pos1 <- this.result[["Site-info"]][[pos.i[1]]]
+        pos1 <- as.character(xmlChildren(pos1)$text)[6]
+        pos2 <- this.result[["Site-info"]][[pos.i[2]]]
+        pos2 <- as.character(xmlChildren(pos2)$text)[6]
+      }
+      if (typeAS == 2) {
+        pos2 <- resultQuery[[e.i]][[e.k]][["Site-info"]][["Pos"]]
+        pos2 <- as.character(xmlChildren(pos2)$text)[6]
+      }
       
       if (verbose)
         cat("  sub-entrie ", k, " has ", length(entries.j), " element(s).\n")
@@ -124,25 +80,17 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
         ##cat ("j=", j, "(j.offset=", j.offset, ")\n")
         j.offset <- j.offset + 1
         e.j <- entries.j[j]
-        this.result <- resultQuery[[e.i]][[e.k]]
-        typeAS <- this.result[["Alter-info"]][["AS"]][["AS-type"]]
-        typeAS <- as.integer(as.character(xmlChildren(typeAS)$text)[6])
-        
         if (typeAS == 1) {
-          pos1 <- this.result[["Alter-info"]][["AS"]][[2]]
-          pos1 <- as.character(xmlChildren(pos1)$text)[6]
-          pos2 <- this.result[["Alter-info"]][["AS"]][[3]]
-          pos2 <- as.character(xmlChildren(pos2)$text)[6]
           spsiteIpos[[j.offset]] <- c(as.integer(pos1),
-                               as.integer(pos2))
+                                      as.integer(pos2))
         }
         if (typeAS == 2) {
-          pos2 <- resultQuery[[e.i]][[e.k]][["Alter-info"]][["AS"]][[2]]
-          pos2 <- as.character(xmlChildren(pos2)$text)[6]
           spsiteIIpos[[j.offset]] <- c(as.integer(pos2))
         }
         pData.tissue[j.offset] <- get.pData(this.result[[e.j]], "Hit-tissue")
         pData.histology[j.offset] <- get.pData(this.result[[e.j]], "Hit-histology")
+        
+        ##pData.other[[j.offset]] <- other.pdata
         pData.site[j.offset] <- k
       }
 

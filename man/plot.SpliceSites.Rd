@@ -43,15 +43,15 @@ in preparation.}
 
 \seealso{\code{\link{SpliceSites-class}}}
 \examples{
-data(spsites.Hs.44)
+data(spsites)
 
-plot(spsites.Hs.44, main="Hs.44")
+plot(spsites, main=attr(spsites, "name"))
 
-sp.pData <- spsites.Hs.44@spsiteIpos.pData
+sp.pData <- spsites@spsiteIpos.pData
 
 ##col <- as.integer(factor(sp.pData$tissue))
 
-##plot(spsites.Hs.44, col.typeI=col, main="Hs.44")
+##plot(spsites, col.typeI=col, main=attr("name", spsites))
 
 }
 \keyword{ hplot }% at least one, from doc/KEYWORDS

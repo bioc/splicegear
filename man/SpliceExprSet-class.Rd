@@ -36,13 +36,13 @@ Objects can be created by calls of the form \code{new("SpliceExprSet", ...)}.
  and \code{\link{SpliceSites-class}} }
 
 \examples{
-data(eset.Hs.44)
-data(probes.Hs.44)
-data(spsites.Hs.44)
+data(eset, package="splicegear")
+data(probes, package="splicegear")
+data(spsites, package="splicegear")
 
-spliceset.Hs.44 <- new("SpliceExprSet", eset=eset.Hs.44,
-                       probes=probes.Hs.44, spliceSites=spsites.Hs.44)
+spliceset <- new("SpliceExprSet", eset=eset,
+                       probes=probes, spliceSites=spsites)
 
-plot(spliceset.Hs.44)
+plot(spliceset)
 }
 \keyword{classes}

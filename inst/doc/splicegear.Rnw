@@ -88,11 +88,11 @@ The expression values from the {\it GeneLogic} `Dilution' dataset
 liver) were observed.
 
 <<<fig=TRUE>>=
-data(spsites.Hs.44)
+data(spsites)
 
-print(spsites.Hs.44)
+print(spsites)
 
-plot(spsites.Hs.44)
+plot(spsites)
 @ 
 
 \section*{Import data}
@@ -169,9 +169,9 @@ dispatch system, a call to \Rfunction{as.data.frame} with a first
 argument of class \Rclass{SpliceExprSet} should be enough.
 
 <<>>=
-data(spliceset.Hs.44)
+data(spliceset)
 
-dataf <- as.data.frame(spliceset.Hs.44)
+dataf <- as.data.frame(spliceset)
 
 colnames(dataf)
 @ 

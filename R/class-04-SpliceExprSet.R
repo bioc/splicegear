@@ -5,67 +5,60 @@
 ##
 require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
 
-##.initSpliceExprSetMethods <- function(where=where) {
-  setClass("SpliceExprSet",
-           representation(spliceSites="SpliceSites",
-                          probes = "Probes",
-                          eset="exprSet")) ## exprs: one row per probe,
-  ## one column per experiment
-  ## phenoData: covariate info.
-  
-  ## -- accessors --
-  if (is.null(getGeneric("spliceSites")))
-    setGeneric("spliceSites", function(object)
+setClass("SpliceExprSet",
+         representation(spliceSites="SpliceSites",
+                        probes = "Probes",
+                        eset="exprSet")) ## exprs: one row per probe,
+## one column per experiment
+## phenoData: covariate info.
+
+## -- accessors --
+if (is.null(getGeneric("spliceSites")))
+  setGeneric("spliceSites", function(object)
                standardGeneric("spliceSites"))
-#, where=where)
 
-  setMethod("spliceSites", signature(object = "SpliceExprSet"),
-            function(object) {
-              object@spliceSites
-            })
-#, where=where)
+setMethod("spliceSites", signature(object = "SpliceExprSet"),
+          function(object) {
+            object@spliceSites
+          })
 
-#.initSpliceExprSetMethods <- function() {
-  setMethod("exprs", signature(object="SpliceExprSet"),
-            function(object) exprs(object@eset))
-#, where=where)
-  
-  setReplaceMethod("exprs", "SpliceExprSet",
-                   function(object, value) {
-                     exprs(object@eset) <- value
-                     if (nrow(exprs(object)) != nrow(object@probes@pos))
-                       stop("mismatch between the number of probes and the size of the expression matrix.")
-                     return(object)
-                   })
-#, where=where)
 
-  ##setMethod("probepos", signature(object="SpliceExprSet"),
-  ##          function(object) { return(object@probepos) }, where=where)
-  
-  ##setMethod("variant", signature(object="SpliceExprSet"),
-  ##          function(object) { return(object@variant) }, where=where)
-  
-  ## -- other methods --
-  setMethod("show", signature(object = "SpliceExprSet"),
-            function(object) {
-              cat("Alternative splicing expression set (SpliceExprSet):\n")
-              cat("\t", ncol(exprs(object@eset)), " chip(s)\n", sep="")
-              cat("\t", nrow(exprs(object)), " probe(s) on the sequence\n", sep="")
+setMethod("exprs", signature(object="SpliceExprSet"),
+          function(object) exprs(object@eset))
+
+setReplaceMethod("exprs", "SpliceExprSet",
+                 function(object, value) {
+                   exprs(object@eset) <- value
+                   if (nrow(exprs(object)) != nrow(object@probes@pos))
+                     stop("mismatch between the number of probes and the size of the expression matrix.")
+                   return(object)
+                 })
+
+##setMethod("probepos", signature(object="SpliceExprSet"),
+##          function(object) { return(object@probepos) }, where=where)
+
+##setMethod("variant", signature(object="SpliceExprSet"),
+##          function(object) { return(object@variant) }, where=where)
+
+## -- other methods --
+setMethod("show", signature(object = "SpliceExprSet"),
+          function(object) {
+            cat("Alternative splicing expression set (SpliceExprSet):\n")
+            cat("\t", ncol(exprs(object@eset)), " chip(s)\n", sep="")
+            cat("\t", nrow(exprs(object)), " probe(s) on the sequence\n", sep="")
               cat(spliceSites(object))
-            })
-#, where=where)
-    
-  setMethod("plot", signature(x = "SpliceExprSet", y = "missing"),
-            function(x, ..., probes.opt = list(), expr.opt = list(col=NA, lty = 1:6),
-                      fig.xratio=c(2,1), fig.yratio=c(2,1),
-                      probepos.yscale=NULL) {
+          })
+
+
+setMethod("plot", signature(x = "SpliceExprSet", y = "missing"),
+          function(x, ..., probes.opt = list(), expr.opt = list(col=NA, lty = 1:6),
+                   fig.xratio=c(2,1), fig.yratio=c(2,1),
+                   probepos.yscale=NULL) {
               plot.SpliceExprSet(x, ..., probes.opt = probes.opt,
                                  expr.opt = expr.opt,
                                  fig.xratio=fig.xratio, fig.yratio=fig.yratio,
                                  probepos.yscale=probepos.yscale)
             })
-#            , where=where)
-#}
 
 
 ##setMethod("sort", signature(x = "SpliceExprSet"),
@@ -92,10 +85,6 @@ sort.SpliceExprSet <- function(x, fun=function(x) order(x@probes@pos[, 1]), reve
   
   return(x)
 }
-##            ,
-##            where=where)
-  
-##}
 
 ##  setMethod("isProbeOnSpliceSite", "SpliceExprSet",
 isSpliceSiteOnProbe <- function(spSites, probes) {

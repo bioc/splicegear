@@ -33,8 +33,8 @@
 \seealso{ \code{\link{SpliceSites-class}}, \code{\link{SpliceExprSet-class}}, }
 
 \examples{
-data(probes.Hs.44)
+data(probes)
 
-plot(probes.Hs.44)
+plot(probes)
 }
 \keyword{classes}

@@ -22,9 +22,9 @@ sort.SpliceExprSet(x, fun = function(x) order(x@probes@pos[, 1]), reverse = FALS
 \author{ Laurent }
 \seealso{\code{\link{SpliceExprSet-class}}}
 \examples{
-data(spliceset.Hs.44)
+data(spliceset)
 
-s.spliceset <- sort.SpliceExprSet(spliceset.Hs.44)
+s.spliceset <- sort.SpliceExprSet(spliceset)
 
 }
 \keyword{ manip }
