@@ -1,19 +1,17 @@
 require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
 
-#.initSpliceSitesMethods <- function(where=where) {
   
-  setClass("SpliceSites",
-           representation(
-                          seq = "character",   # the genomic sequence (if available)
-                          seq.length = "integer", 
-                          spsiteIpos = "matrix", # a two-columns matrix (window for type I splice site),
+setClass("SpliceSites",
+         representation(
+                        seq = "character",   # the genomic sequence (if available)
+                        seq.length = "integer", 
+                        spsiteIpos = "matrix", # a two-columns matrix (window for type I splice site),
                           spsiteIIpos = "integer", # position for type II splice site
-                          spsiteIIIpos = "matrix", # a two-columns matrix (window for type III splice site),
-                          spsiteIpos.pData = "phenoData",
-                          spsiteIIpos.pData = "phenoData",
-                          spsiteIIIpos.pData = "phenoData"
-                          ))
-#           where=where)
+                        spsiteIIIpos = "matrix", # a two-columns matrix (window for type III splice site),
+                        spsiteIpos.pData = "phenoData",
+                        spsiteIIpos.pData = "phenoData",
+                        spsiteIIIpos.pData = "phenoData"
+                        ))
 
 
   setMethod("show", signature(object = "SpliceSites"),
@@ -30,21 +28,21 @@ require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
               show(object@spsiteIIpos.pData)
               cat("\t", nrow(object@spsiteIIIpos), " type III splice site(s)\n", sep="")
             })
- #           where=where)
 
-  if( !isGeneric("plot") )
-    setGeneric("plot", function(x, y, ...)
-               standardGeneric("plot"))
-            #, where=where)
-  
-  setMethod("plot",
-            signature(x="SpliceSites", y="missing"),
-            function(x, ...) {
+
+if( !isGeneric("plot") )
+  setGeneric("plot", function(x, y, ...)
+             standardGeneric("plot"))
+
+
+setMethod("plot",
+          signature(x="SpliceSites", y="missing"),
+          function(x, ...) {
               plot.SpliceSites(x, ...)
-              })
-#            where=where)
+            })
 
-  setMethod("initialize", "SpliceSites",
+
+setMethod("initialize", "SpliceSites",
           function(.Object, 
                    seq = "", seq.length = as.integer(-1),
                    spsiteIpos = matrix(0, 0, 0),
@@ -68,7 +66,14 @@ require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
             .Object@spsiteIIIpos.pData = spsiteIIIpos.pData
             return(.Object)
           })
-#            where=where)
 
 
-#}
+if( !isGeneric("grid.plot") )
+  setGeneric("grid.plot", function(x, y, ...)
+             standardGeneric("grid.plot"))
+
+setMethod("grid.plot",
+          signature(x="SpliceSites", y="missing"),
+          function(x, ...) {
+              grid.plot.SpliceSites(x, ...)
+            })

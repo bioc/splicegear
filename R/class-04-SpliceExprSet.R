@@ -51,14 +51,24 @@ setMethod("show", signature(object = "SpliceExprSet"),
 
 
 setMethod("plot", signature(x = "SpliceExprSet", y = "missing"),
-          function(x, ..., probes.opt = list(), expr.opt = list(col=NA, lty = 1:6),
+          function(x, probes.opt = list(), expr.opt = list(col=NA, lty = 1:6),
                    fig.xratio=c(2,1), fig.yratio=c(2,1),
-                   probepos.yscale=NULL) {
-              plot.SpliceExprSet(x, ..., probes.opt = probes.opt,
-                                 expr.opt = expr.opt,
-                                 fig.xratio=fig.xratio, fig.yratio=fig.yratio,
-                                 probepos.yscale=probepos.yscale)
-            })
+                   probepos.yscale=NULL, ...) {
+            plot.SpliceExprSet(x, probes.opt = probes.opt,
+                               expr.opt = expr.opt,
+                               fig.xratio=fig.xratio, fig.yratio=fig.yratio,
+                               probepos.yscale=probepos.yscale, ...)
+          })
+
+if( !isGeneric("grid.plot") )
+  setGeneric("grid.plot", function(x, y, ...)
+             standardGeneric("grid.plot"))
+
+setMethod("grid.plot",
+          signature(x="SpliceExprSet", y="missing"),
+          function(x, ...) {
+            grid.plot.SpliceExprSet(x, ...)
+          })
 
 
 ##setMethod("sort", signature(x = "SpliceExprSet"),
@@ -117,9 +127,11 @@ isProbeOnSpliceSite <- function(probes, spSites) {
     any(x[1] >= y & x[2] <= y)
   }
 
-  isintypeII <- apply(r.ppos, 2, hasSite,
-                      spSites@spsiteIIpos)
-
+  if(length(spSites@spsiteIIpos) > 0)
+    isintypeII <- apply(r.ppos, 2, hasSite,
+                        spSites@spsiteIIpos)
+  else
+    isintypeII <- rep(FALSE, nrow(probes@pos))
 
   return(isintypeI=isintypeI, isintypeII=isintypeII)
 }

@@ -12,6 +12,8 @@ plot.Probes <- function(x,
   } else {
     ypos <- probepos.yscale
   }
+
+  ylim <- numeric(0)
   
   if (! add) {
     if (is.null(xlim))
@@ -37,5 +39,12 @@ plot.Probes <- function(x,
       segments(x@pos[i, 1], ypos[i], x@pos[i, 2], ypos[i], col=col[i])
     }
   }
+
+  if (identical(ylim, numeric(0)))
+    ylim <- ypos
+  else
+    ylim <- range(ypos)
+  
+  invisible(ylim)
   
 }

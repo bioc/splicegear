@@ -18,6 +18,7 @@
   
   require(methods, quietly=TRUE) || stop("The package 'methods' is required !")
   require(Biobase, quietly=TRUE) || stop("The package 'Biobase' is required !")
+  require(grid, quietly=TRUE) || stop("The package 'grid' is required !")
 
   ##.initSpliceSitesMethods(where=where)
   ##.initSpliceSitesGenomicMethods(where=where)

@@ -9,6 +9,12 @@ as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
   
   nc.eset <- ncol(exprs(eset))
   nr.eset <- nrow(exprs(eset))
+
+  ## sanity check
+  ## (because slots of objects can be tweaked by the user)
+  if (nr.eset != nrow(probes@pos)) {
+    stop("inconsistency beetween slots 'eset' and 'probes'")
+  }
   
   ## build the probe position column
   i.probes <- seq(1, nr.eset)

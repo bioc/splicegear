@@ -29,7 +29,11 @@
 
 \bibliographystyle{plainnat}
 
+\title{Splicegear package}
+
 \begin{document}
+
+\maketitle
 
 \section*{Introducing splicegear}
 
@@ -97,7 +101,9 @@ plot(spsites)
 
 \section*{Import data}
 The package has facilities to parse XML structures in a defined XML
-format (see Appendix~\ref{appendix:dtd}).
+format 
+(see \url{http://palsdb.ym.edu.tw/index2.html})
+%(see Appendix~\ref{appendix:dtd}).
 Motivations are discussed in length
 in the companion reference for this documentation~\ref{laurent+etal:2003:submitted}.
 To summarize, we hope to initiate efficient data exchange for
@@ -186,9 +192,8 @@ lm.panel <- function(x, y, ...) {
 ## the mRNA
 coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
 @
-
-The reader will refer to XXX for detailed explanations about formulas
-and models in {\bf R}.
+Further explanations about formulas and models in {\bf S-plus} and {\bf R}
+can be found easily elsewhere.
 
 
 \section*{Genomic view}
@@ -258,6 +263,6 @@ the information will be distributed shortly.
 
 \appendix
 
-\label{appendix:dtd}
+%\label{appendix:dtd}
 
 \end{document}

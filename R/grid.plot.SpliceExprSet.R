@@ -1,4 +1,4 @@
-plot.SpliceExprSet <- function(x, probes.opt = list(),
+grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
                                expr.opt = list(col=NA, lty = 1:6),
                                fig.xratio=c(2,1), fig.yratio=c(2,1),
                                probepos.yscale=NULL, ylim = NULL, ...) {
@@ -14,7 +14,23 @@ plot.SpliceExprSet <- function(x, probes.opt = list(),
     expr.opt$col <- rainbow(ncol(exprs(eset)))
   }
   
-  layout(matrix(c(1,2), 1, 2), width=fig.xratio, height=fig.yratio) #fig.yratio useless for now
+  grid.newpage()
+  ##top.vp <- top.vp <- viewport(y = 0, height = unit(1, "npc") - unit(1.5, 
+  ##      "lines"), just = c("centre", "bottom"))
+  top.lt <- grid.layout(2, 2, widths = 0.9 * c(0.5),
+                        heights = 0.9 * 1, ##c(0.5),
+                        default.units = "npc",
+                        respect = matrix(c(1, 1), 2, 2))
+  temp.vp <- viewport(layout = top.lt)
+  push.viewport(temp.vp)
+
+  panel.vp <- viewport(layout.pos.row = 2, layout.pos.col = 1)  
+  grid.plot(spSites, vp=panel.vp, add=TRUE)
+  
+  panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 1)
+  ylim <- do.call("grid.plot", c(list(probes, xlim=c(0, spSites@seq.length), vp=panel.vp, add=TRUE),
+                                 probes.opt))
+  
   
   if (is.null(probepos.yscale)) {
     ypos <- 1:nrow(probes@pos)
@@ -23,9 +39,7 @@ plot.SpliceExprSet <- function(x, probes.opt = list(),
   }
 
   ##ylim <- range(ypos)
-
-  ##plot(probes, spSites, fig.yratio=fig.yratio, probepos.yscale=ypos, ...)
-  m.ylim <- plot(probes, spSites, fig.yratio=fig.yratio, probepos.yscale=ypos, ...)
+    
   if (is.null(ylim))
     ylim <- m.ylim
   
@@ -47,6 +61,20 @@ plot.SpliceExprSet <- function(x, probes.opt = list(),
   ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
   xlim <- c(0, spSites@seq.length)
 
+  ##scale.x <- grid.make.numeric2npc(xlim)
+  ##scale.y <- grid.make.numeric2npc(ylim)
+
+  gp <- grid.expand.gp(nrow(exprs(eset)), parlist=expr.opt)
+
+  panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 2)
+  push.viewport(panel.vp)
+  vp <- viewport(xscale = xlim, yscale = ylim)
+  for (i in seq(1, nrow(exprs(eset)), length=nrow(exprs(eset))))
+    grid.lines(exprs(eset)[i, ], ypos,
+               gp = gp[[i]], vp = panel.vp)
+  
+  return()
+  
   do.call("matplot", c(list(exprs(eset), matrix(ypos, ncol=1),
                             ylim=ylim,
                             xlab="expression", ylab="probes",

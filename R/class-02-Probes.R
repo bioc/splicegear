@@ -21,17 +21,25 @@ if( !isGeneric("plot") )
 
 setMethod("plot",
           signature(x="Probes", y="missing"),
-          function(x, ..., probepos.yscale=NULL){ ##, fig.yratio=c(2,1)) {
-            plot.Probes(x, ..., probepos.yscale=NULL) ##, fig.yratio=c(2,1))
+          function(x, probepos.yscale=NULL, ...){ ##, fig.yratio=c(2,1)) {
+            plot.Probes(x, probepos.yscale=NULL, ...) ##, fig.yratio=c(2,1))
           })
 
 setMethod("plot",
           signature(x="Probes", y="SpliceSites"),
-          function(x, y, probes.opt=list(), spsites.opt=list(), ...) {
-            if (nrow(x@pos) <= 1)
-              ylim <- c(0,1)
-            else
-              ylim <- c(0,nrow(x@pos))
+          function(x, y, probes.opt=list(), spsites.opt=list(), fig.yratio = c(2,1), probepos.yscale = NULL, ...) {
+            
+            if (is.null(probepos.yscale)) {
+              if (nrow(x@pos) <= 1)
+                ypos <- c(0,1)
+              else
+                ypos <- 1:nrow(x@pos)
+            } else {
+              ypos <- probepos.yscale
+            }
+            
+            ylim <- range(ypos, 0)
+            
             ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
             xlim <- c(0, y@seq.length)
             
@@ -41,14 +49,94 @@ setMethod("plot",
                  type="n", ...)
             
             do.call("plot.SpliceSites", c(list(y, add=TRUE, ylim=ylim), spsites.opt))
-            do.call("plot.Probes", c(list(x, xlim=c(0, y@seq.length), add=TRUE), probes.opt))
+            p.ylim <- do.call("plot.Probes",
+                              c(list(x, xlim=c(0, y@seq.length), add=TRUE, probepos.yscale = probepos.yscale),
+                                probes.opt))
             
             abline(h=0, col="grey")
-              
+
+
+            invisible(ylim)
+            
+          }
+          )
+
+
+if( !isGeneric("grid.plot") )
+  setGeneric("grid.plot", function(x, y, ...)
+             standardGeneric("grid.plot"))
+
+setMethod("grid.plot",
+          signature(x="Probes", y="missing"),
+          function(x, probepos.yscale=NULL, vp = NULL, ...){ ##, fig.yratio=c(2,1)) {
+            grid.plot.Probes(x, probepos.yscale=NULL, vp = vp, ...) ##, fig.yratio=c(2,1))
           })
 
 
-matchprobes2Probes <- function(mpo, probes.length, ref.seq=NULL, ref.seq.length=NULL, names=NULL) {
+setMethod("grid.plot",
+          signature(x="Probes", y="SpliceSites"),
+          function(x, y, probes.opt=list(), spsites.opt=list(), fig.yratio = c(2/3, 1/3),
+                   probepos.yscale = NULL, add=FALSE, vp = NULL, ...) {
+            
+            if (is.null(probepos.yscale)) {
+              if (nrow(x@pos) <= 1)
+                ypos <- c(0,1)
+              else
+                ypos <- 1:nrow(x@pos)
+            } else {
+              ypos <- probepos.yscale
+            }
+            
+            ylim <- range(ypos, 0)
+            
+            ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
+            xlim <- c(0, y@seq.length)
+
+
+
+            if (! add) {
+              grid.newpage()
+              figscale <- 0.9 
+              ##vp <- viewport(xscale = xlim, yscale = ylim, w=0.9, h=0.9)
+            } else {
+              push.viewport(vp)
+              on.exit(pop.viewport())
+              figscale <- 1
+            }
+            
+            top.lt <- grid.layout(2, 1, widths = figscale * 1,
+                                    heights = figscale * fig.yratio,
+                                  default.units = "npc",
+                                  respect = matrix(c(1, 1), 2, 1))
+            
+            temp.vp <- viewport(layout = top.lt)
+            push.viewport(temp.vp)
+
+            ##spliceSites
+            panel.vp <- viewport(layout.pos.row = 2, layout.pos.col = 1)
+            do.call("grid.plot", c(list(y, add=TRUE, ylim=ylim, vp=panel.vp), spsites.opt))
+            ##probes
+            panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 1)
+            ## trick to have the background:
+            spsites.opt.hack <- spsites.opt
+            spsites.opt.hack$col.typeI <- 0
+            do.call("grid.plot", c(list(y, add=TRUE, ylim=ylim, vp=panel.vp),
+                                   spsites.opt.hack))
+            p.ylim <- do.call("grid.plot",
+                              c(list(x, xlim=c(0, y@seq.length), add=TRUE, vp=panel.vp,
+                                     probepos.yscale = probepos.yscale),
+                                probes.opt))
+            
+            ##abline(h=0, col="grey")
+            
+            invisible(ylim)
+            
+          }
+          )
+
+
+
+matchprobes2Probes <- function(mpo, probes.length, names=NULL) {
   if (! identical(names(mpo), c("match", "pos")))
     stop("Expected a list with names 'match' and 'probes'\n(as returned by the package 'matchprobes').")
 

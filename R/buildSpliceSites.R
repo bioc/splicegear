@@ -41,7 +41,12 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     ug.id <- as.character(xmlChildren(ug.id)$text)[6]
     seq.len <- resultQuery[[e.i]][["Reference-sequence"]][["ref-len"]]
     seq.len <- as.integer(as.character(xmlChildren(seq.len)$text)[6])
-
+    seq.string <- resultQuery[[e.i]][["Reference-sequence"]][["ref-seq"]]
+    if (is.null(seq.string))
+      seq.string <- ""
+    else
+      seq.string <- as.character(xmlChildren(seq.string)$text)[6]
+    
     n.ASinfo <- sum(unlist(lapply(resultQuery[[e.i]][entries.k],
                                  function(x) sum(names(x) == "Hit-info"))))
     spsiteIpos <- vector("list", length = n.ASinfo)
@@ -128,6 +133,7 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
                  site = pData.site[spsiteIIpos.i])
     
     spsites.list[[i]] <- new("SpliceSites", seq.length = seq.len,
+                             seq = seq.string,
                              spsiteIpos = spsiteIpos,
                              spsiteIIpos = spsiteIIpos,
                              spsiteIpos.pData = spsiteIpos.pData,

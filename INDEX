@@ -4,6 +4,7 @@ barplot.SpliceSites     barplot for SpliceSites
 buildSpliceSites        Functions to query PALSdb
 getRelSignStrength      ~~ functions to perform SPLICE ~~
 isProbeOnSpliceSite     Check the presence of probes on certain exons
+matchprobes2Probes      create Probes object from matchprobes results
 plot.SpliceExprSet      plot a SpliceExprSet
 plot.SpliceSitesGenomic
                         Function to plot SpliceSitesGenomic objects
