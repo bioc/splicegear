@@ -14,6 +14,7 @@ queryPALSdb <- function(query, disp = c("data", "browser"),
   disp <- match.arg(disp)
   field <- match.arg(field)
   species <- match.arg(species)
+  ident.threshold <- match.arg(ident.threshold)
   
   format <- switch(disp,
                    data="xml",
@@ -49,6 +50,7 @@ queryPALSdb <- function(query, disp = c("data", "browser"),
     print(url)
   }
   if (disp == "data") {
+    require(XML, quietly=TRUE) || stop("Library XML required !")
     return(.handleXML(url))
     ##return(paste(readLines(url(url)), collapse=""))
   }

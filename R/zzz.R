@@ -1,4 +1,6 @@
 .First.lib <- function(libname, pkgname, where) {
+
+  message <- TRUE
   
   if (missing(where)) {
     where <- match(paste("package:", pkgname, sep=""), search())
@@ -9,6 +11,10 @@
     where <- pos.to.env(where)
   }
 
+  if (message) {
+    cat("splicegear: development version.\n")
+    cat("Make sure you have the latest devel version of the package Biobase.\n")
+  }
   
   require(methods, quietly=TRUE) || stop("The package 'methods' is required !")
   require(Biobase, quietly=TRUE) || stop("The package 'Biobase' is required !")
