@@ -11,10 +11,10 @@
   and probe intensities from the 'dilution' dataset.
 }
 \usage{
-data(eset, package="splicegear")
-data(probes)
-data(spsites, package="splicegear")
-data(spliceset, package="splicegear")
+#data(eset, package="splicegear")
+#data(probes, package="splicegear")
+#data(spsites, package="splicegear")
+#data(spliceset, package="splicegear")
 }
 \format{
   The formats are objects of class \code{\link[Biobase]{exprSet-class}},
