@@ -68,7 +68,11 @@ The model chosen is not completely incompatible with this view. We
 present how to use this representation within the package in one of
 the last sections below.
 
-The package is loaded by a simple call of \Rfunction{library}:
+The package is loaded by a simple call to
+\begin{verbatim}
+library(splicegear)
+\end{verbatim}
+
 <<R.hide, results=hide, echo=FALSE>>=
 library(splicegear)
 @
@@ -91,17 +95,60 @@ print(spsites.Hs.44)
 plot(spsites.Hs.44)
 @ 
 
+\section*{Connectivity (retrieve data from websites)}
+The package has facilities to parse XML structures in a defined XML
+format (see Appendix~\ref{appendix:dtd}).
+Motivations are discussed in length
+in the companion reference for this documentation~\ref{laurent+etal:2003:submitted}.
+To summarize, we hope to initiate efficient data exchange for
+alternative splicing, in the spirit of the WDDX and SOAP
+formats. The DTD we introduce is more a call for discussion by interested
+parties. It is not fully compliant with WDDX nor SOAP, althought it may
+come in the future.
+
+The XML can be stored in a file. In {\bf R}, one can make an object of
+class \Rclass{xml} very easily:
+<<>>=
+library(XML)
+filename <- system.file("data", "example.xml", package="splicegear")
+xml <- xmlTreeParse(filename, asTree=TRUE)
+@
+Further details concerning XML handling can be found in the documentation
+for the package XML.
+
+The package is currently able to connect to the `database of putative
+alternative splicing' {\it PALSdb}.
+The typical way to obtain data from the web is composed of two steps.
+\begin{enumerate}
+  \item query a web site and obtain XML in return
+  \item build {\bf R} objects from the XML
+\end{enumerate}
+
+<<>>=
+xml <- queryPALSdb("alcohol")
+spsites <- buildSpliceSites(xml)
+
+show(spsites)
+@
+
 \section*{data in a \Rclass{data.frame}}
 The \Rclass{data.frame} has a very important role in the S
 language. A large number of function are designed around this data
 structure. We provide a way to link the class \Robject{SpliceExprSet}
-with this data structure.
+with this data structure. The function casting to \Rclass{data.frame}
+is named \Rfunction{as.data.frame.SpliceExprSet}. Using the S3
+dispatch system, a call to \Rfunction{as.data.frame} with a first
+argument of class \Rclass{SpliceExprSet} should be enough.
 
-<<fig=TRUE>>=
+<<>>=
 data(spliceset.Hs.44)
 
-dataf <- as.data.frame.SpliceExprSet(spliceset.Hs.44)
+dataf <- as.data.frame(spliceset.Hs.44)
 
+colnames(dataf)
+@ 
+
+<<fig=TRUE>>=
 lm.panel <- function(x, y, ...) {
                                   points(x,y,...)
                                   p.lm <- lm(y~x); abline(p.lm)
@@ -112,10 +159,18 @@ lm.panel <- function(x, y, ...) {
 coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
 @
 
+The reader will refer to XXX for detailed explanations about formulas
+and models in {\bf R}.
+
+
 \section*{Genomic view}
 A popular representation of splice variants shows exons as boxes,
 linked by broken lines to show which exons are skipped and which ones
-are not for the splice variants~\ref{fig:genomic.AS}
+are not for the splice variants~\ref{fig:genomic.AS}. In this context,
+type II and type III splice variants are not relevant: each exon
+is only likely to be skipped. The package features an experimental
+class that extends the class \Rclass{SpliceExprSet} and gives compatibility
+with this representation.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -124,5 +179,37 @@ are not for the splice variants~\ref{fig:genomic.AS}
 \caption{\label{fig:genomic.AS}More common representation of alternative splicing.}
 \end{center}
 \end{figure}
+
+<<>>=
+## a 10 bp window
+seq.length <- as.integer(10)
+## positions of the exons
+spsiteIpos <- matrix(c(1, 3.5, 5, 9, 3, 4, 8, 10), nc=2)
+## known variants
+variants <- list(a=c(1,2,3,4), b=c(1,2,3), c=c(1,3,4))
+##
+n.exons <- nrow(spsiteIpos)
+
+spvar <- new("SpliceSitesGenomic", spsiteIpos=spsiteIpos,
+         variants=variants, seq.length=seq.length)
+@ 
+
+A plotting method (not unlike the display that can be found on the
+TrEmbl website) is provided.
+
+<<fig=TRUE>>=
+par(mfrow = c(3,1), mar = c(3.1, 2.1, 2.1, 1.1))
+
+plot(spvar, split=TRUE, col.exon=rainbow(n.exons))
+@
+
+\section*{Probes}
+The class \Rclass{Probes} stores information relative to probes
+matching a reference sequence, primarily their position on the
+a reference sequence
+
+\appendix
+
+\label{appendix:dtd}
 
 \end{document}

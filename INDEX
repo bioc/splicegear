@@ -2,9 +2,15 @@ as.data.frame.SpliceExprSet
                         convert to a data.frame
 buildSpliceSites        Functions to query PALSdb
 getRelSignStrength      ~~ functions to perform SPLICE ~~
+isProbeOnSpliceSite     Check the presence of probes on certain exons
 plot.SpliceExprSet      plot a SpliceExprSet
+plot.SpliceSitesGenomic
+                        Function to plot SpliceSitesGenomic objects
 plot.SpliceSites        plot a SpliceSites object
 Probes-class            Class "Probes"
+sort.SpliceExprSet      A function to sort a SpliceExprSet
 SpliceExprSet-class     Class "SpliceExprSet" ~~~
 spliceset.Hs.44         Example data for splicegear
 SpliceSites-class       Class "SpliceSites"
+SpliceSitesGenomic-class
+                        Class "SpliceSitesGenomic"
