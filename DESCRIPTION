@@ -1,6 +1,6 @@
 Package: splicegear
 Title: splicegear
-Version: 1.0-5
+Version: 1.0-6
 Author: Laurent Gautier <laurent@cbs.dtu.dk>
 Description: A set of tools to work with alternative splicing
 Maintainer: Laurent <laurent@cbs.dtu.dk>

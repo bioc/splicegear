@@ -1,7 +1,7 @@
 .First.lib <- function(libname, pkgname, where) {
 
   message <- TRUE
-  
+
   if (missing(where)) {
     where <- match(paste("package:", pkgname, sep=""), search())
     if(is.na(where)) {
@@ -10,7 +10,7 @@
     }
     where <- pos.to.env(where)
   }
-  
+
   require(methods, quietly=TRUE) || stop("The package 'methods' is required !")
   require(Biobase, quietly=TRUE) || stop("The package 'Biobase' is required !")
   require(grid, quietly=TRUE) || stop("The package 'grid' is required !")
@@ -22,5 +22,10 @@
           "http://www.cbs.dtu.dk/laurent/download/splicegear/")
     }
   }
-  
+
+  if(.Platform$OS.type == "windows" && require(Biobase) && interactive()
+        && .Platform$GUI ==  "Rgui"){
+        addPDF2Vig("splicegear")
+    }
+
 }
