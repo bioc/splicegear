@@ -79,10 +79,11 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
                                  function (x) length(names(x)) - 1)))
   
   spsites.list <- vector("list", length=length(entries.i))
+  names(spsites.list) <- rep(NULL, length=length(entries.i))
   ##spsites.list <- vector("list", length=n.EST.hit)
   ##names(spsites.list) <- rep(NULL, n.EST.hit)
 
-  i.list <- 1
+  ##i.list <- 1
 
   if (verbose)
     cat(length(entries.i), " entrie(s) in the set.\n")
@@ -171,16 +172,17 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
       data.frame(tissue = pData.tissue[spsiteIIpos.i],
                  histology = pData.histology[spsiteIIpos.i],
                  site = pData.site[spsiteIIpos.i])
+    
+    spsites.list[[i]] <- new("SpliceSites", seq.len = seq.len,
+                             spsiteIpos = spsiteIpos,
+                             spsiteIIpos = spsiteIIpos,
+                             spsiteIpos.pData = spsiteIpos.pData,
+                             spsiteIIpos.pData = spsiteIIpos.pData
+                             )
+    
+    names(spsites.list)[i] <- ug.id
+    ##i.list <- i.list + 1
   }
-  spsites.list[[i.list]] <- new("SpliceSites", seq.len = seq.len,
-                                spsiteIpos = spsiteIpos,
-                                spsiteIIpos = spsiteIIpos,
-                                spsiteIpos.pData = spsiteIpos.pData,
-                                spsiteIIpos.pData = spsiteIIpos.pData
-                                  )
-  
-  names(spsites.list)[i.list] <- ug.id
-  i.list <- i.list + 1
   
   return(spsites.list)
   

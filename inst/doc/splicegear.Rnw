@@ -95,7 +95,7 @@ print(spsites.Hs.44)
 plot(spsites.Hs.44)
 @ 
 
-\section*{Connectivity (retrieve data from websites)}
+\section*{Import data}
 The package has facilities to parse XML structures in a defined XML
 format (see Appendix~\ref{appendix:dtd}).
 Motivations are discussed in length
@@ -116,6 +116,12 @@ xml <- xmlTreeParse(filename, asTree=TRUE)
 Further details concerning XML handling can be found in the documentation
 for the package XML.
 
+The XML structure can be converted to a list of \Rclass{SpliceSites}:
+<<>>=
+spsites <- buildSpliceSites(xml, verbose=FALSE)
+length(spsites)
+show(spsites[1:2])
+@ 
 The package is currently able to connect to the `database of putative
 alternative splicing' {\it PALSdb}.
 The typical way to obtain data from the web is composed of two steps.
@@ -124,14 +130,36 @@ The typical way to obtain data from the web is composed of two steps.
   \item build {\bf R} objects from the XML
 \end{enumerate}
 
-<<>>=
+\begin{verbatim}
 xml <- queryPALSdb("alcohol")
-spsites <- buildSpliceSites(xml)
+spsites <- buildSpliceSites(xml, verbose=FALSE)
+\end{verbatim}
 
-show(spsites)
-@
+\section*{The class \Rclass{SpliceSites}}
+The class \Rclass{SpliceSites} is a little complex. One should refer
+to the relevant help file for details.
+We only introduce here a detailed example of can be performed.
 
-\section*{data in a \Rclass{data.frame}}
+<<>>=
+## build SpliceSites
+library(XML)
+filename <- system.file("data", "example.xml", package="splicegear")
+xml <- xmlTreeParse(filename, asTree=TRUE)
+spsites <- buildSpliceSites(xml, verbose=FALSE)
+
+## subset the second object in the list
+my.spsites <- spsites[[2]]
+@ 
+
+<<fig=TRUE>>=
+plot(my.spsites)
+@ 
+As shown, for most of the putative splice site several ESTs are
+supporting evidences. One might want to see the tissue distribution of
+the matches
+
+
+\section*{Data in a \Rclass{data.frame}}
 The \Rclass{data.frame} has a very important role in the S
 language. A large number of function are designed around this data
 structure. We provide a way to link the class \Robject{SpliceExprSet}
@@ -203,10 +231,30 @@ par(mfrow = c(3,1), mar = c(3.1, 2.1, 2.1, 1.1))
 plot(spvar, split=TRUE, col.exon=rainbow(n.exons))
 @
 
-\section*{Probes}
+\section*{Combining alternative splicing information with probes intensities}
+
 The class \Rclass{Probes} stores information relative to probes
 matching a reference sequence, primarily their position on the
-a reference sequence
+a reference sequence. Additional data concerning the probes
+can be stored in the slot {\it info}.
+
+The class \Rclass{SpliceExprSet} is mainly an aggregation of an instance
+of class \Rclass{SpliceSites}, an instance of \Rclass{Probes} and an
+instance of class \Rclass{exprSet}.
+
+The typical procedure is to build \Rclass{SpliceSites} and their
+correspondings \Rclass{Probes} for a type of chip\footnote{See the functions
+\Rfunction{queryPALSdb}, \Rfunction{buildSpliceSites} and the Bioconductor
+package \Rpackage{matchprobes}.}.
+Experimental hybridizations for the probes are stored in
+\Rclass{exprSet} objects. This design facilitates the use of the package
+in different contexts. For example, once the mapping of the probes has
+been performed and the data relative to alternative splicing have been
+acquired, the analyst can re-use these and combine them with data from different
+hybridization experiments. It also becomes possible to distribute
+mappings and splice variants information for certain types of chips.
+This was performed for {\it Affymetrix} chips and data packages providing
+the information will be distributed shortly.
 
 \appendix
 

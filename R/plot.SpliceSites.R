@@ -1,4 +1,4 @@
-plot.SpliceSites <- function(x, col.typeI="greenyellow", col.typeI.window="yellow", col.typeII="red", add=FALSE, ylim=NULL, ...) {
+plot.SpliceSites <- function(x, col.typeI="orange", col.typeI.window="yellow", col.typeII="red", add=FALSE, ylim=NULL, ...) {
 
   ## type I splice sites
   if (nrow(x@spsiteIpos) > 0) {
