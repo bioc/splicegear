@@ -1,6 +1,6 @@
 \name{as.data.frame.SpliceExprSet}
 \alias{as.data.frame.SpliceExprSet}
-\alias(as.data.frame.SpliceSites}
+\alias{as.data.frame.SpliceSites}
 \title{ convert to a data.frame }
 \description{
   Convert a SpliceExprSet object to a data.frame

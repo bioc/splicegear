@@ -1,5 +1,6 @@
 \name{isProbeOnSpliceSite}
 \alias{isProbeOnSpliceSite}
+\alias{isSpliceSiteOnProbe}
 \title{ Check the presence of probes on certain exons }
 \description{
   Return whether the probes are located on exons involved in (putative)
@@ -7,6 +8,7 @@
 }
 \usage{
 isProbeOnSpliceSite(probes, spSites)
+## isSpliceSiteOnProbe is not yet implemented
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -1,17 +1,17 @@
-grid.numeric2npc <- function(x, xlim=NULL, lower.blank=0, upper.blank=0) {
-  if (is.null(xlim)) {
-    offset <- min(x, na.rm=TRUE)
-    scale <- max(x, na.rm=TRUE)
-  } else {
-    offset <- min(xlim)
-    scale <- max(xlim, na.rm=TRUE)
-  }
-  scale <- scale - offset
-  offset <- offset + lower.blank
-  scale <- scale + upper.blank
-  x <- (x - offset) / scale
-  return(x)
-}
+# grid.numeric2npc <- function(x, xlim=NULL, lower.blank=0, upper.blank=0) {
+#   if (is.null(xlim)) {
+#     offset <- min(x, na.rm=TRUE)
+#     scale <- max(x, na.rm=TRUE)
+#   } else {
+#     offset <- min(xlim)
+#     scale <- max(xlim, na.rm=TRUE)
+#   }
+#   scale <- scale - offset
+#   offset <- offset + lower.blank
+#   scale <- scale + upper.blank
+#   x <- (x - offset) / scale
+#   return(x)
+# }
 
 grid.make.numeric2npc <- function(x=NULL, xlim=NULL, lower.blank=0, upper.blank=0) {
   if (! is.null(x)) {

@@ -16,9 +16,12 @@ plot.Probes <- function(x,
   ylim <- numeric(0)
   
   if (! add) {
-    if (is.null(xlim))
-      xlim <- range(x@pos)
-    
+    if (is.null(xlim)) {
+      if (nrow(x@pos) == 0)
+        xlim <- c(0,1)
+      else
+        xlim <- range(x@pos)
+    }
     ## plot the upper part:
     
     ylim <- range(ypos, 0)

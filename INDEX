@@ -2,7 +2,8 @@ as.data.frame.SpliceExprSet
                         convert to a data.frame
 barplot.SpliceSites     barplot for SpliceSites
 buildSpliceSites        Functions to query PALSdb
-getRelSignStrength      ~~ functions to perform SPLICE ~~
+getRelSignStrength      functions to perform SPLICE
+grid.plot.Probes        Plot splicegear objects
 isProbeOnSpliceSite     Check the presence of probes on certain exons
 matchprobes2Probes      create Probes object from matchprobes results
 plot.SpliceExprSet      plot a SpliceExprSet
@@ -11,7 +12,7 @@ plot.SpliceSitesGenomic
 plot.SpliceSites        plot a SpliceSites object
 Probes-class            Class "Probes"
 sort.SpliceExprSet      A function to sort a SpliceExprSet
-SpliceExprSet-class     Class "SpliceExprSet" ~~~
+SpliceExprSet-class     Class "SpliceExprSet"
 spliceset               Example data for splicegear
 SpliceSites-class       Class "SpliceSites"
 SpliceSitesGenomic-class
