@@ -1,6 +1,7 @@
 \name{SpliceExprSet-class}
 \docType{class}
 \alias{SpliceExprSet-class}
+\alias{spliceSites}
 \title{Class "SpliceExprSet" ~~~ }
 \description{ A class to store probe expression values with alternative
   splicing information}
@@ -19,12 +20,13 @@ Objects can be created by calls of the form \code{new("SpliceExprSet", ...)}.
 
 \section{Methods}{
   \describe{
-    \item{show}{\code{signature(object = "SpliceExprSet")}: a printing method. }
     \item{exprs}{\code{signature(object = "SpliceExprSet")}: an accessor
     to access directly the slot \code{exprs} of the attribute \code{eset}}
     \item{plot}{\code{signature(x = "SpliceExprSet", y = "missing")}: a
       ploting method.}
-    \item{spliceSites}{\code{signature(object = "SpliceExprSet")}: accessor.}
+    \item{show}{\code{signature(object = "SpliceExprSet")}: a printing method. }
+    \item{spliceSites}{\code{signature(object = "SpliceExprSet")}:
+      accessor. }
   }
 }
 \references{ a manuscript in preparation } %FIXME: poster

@@ -10,9 +10,9 @@ as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{object \code{\link{SpliceExprSet-class}} }
-  \item{row.names}{ `NULL' or a character vector giving the row names for the
+  \item{row.names}{ \code{NULL} or a character vector giving the row names for the
     data frame.  Missing values are not allowed}
-  \item{optional}{ logical. If `TRUE', setting row names is optional.}
+  \item{optional}{ logical. If \code{TRUE}, setting row names is optional.}
 }
 \details{
   Data are traditionally stored in objects of class \code{data.frame}.
@@ -23,10 +23,10 @@ as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA)
 A \code{data.frame}. The first variable names are \code{begin},
 \code{end}, \code{isintypeI}, \code{isintypeII}, \code{exprs} and
 \code{genenames}. The next variable names will the ones in the
-\code{\link[Biobase]{phenoData-class} attribute of the
+\code{\link[Biobase]{phenoData-class}} attribute of the
   \code{\link[Biobase]{exprSet-class}} object belonging the
   \code{\link{SpliceExprSet-class}}. The last variable names will be the
-  ones in the slot \code{info} of the \code{\link{Probes-class}} object.}
+  ones in the slot \code{info} of the \code{\link{Probes-class}} object.
 }
 \author{ Laurent }
 

@@ -1,4 +1,5 @@
-% \VignetteIndexEntry{splicegear Introduction}
+% -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
+%\VignetteIndexEntry{splicegear Introduction}
 %\VignetteDepends{splicegear, Biobase}
 %\VignetteKeywords{Expression Analysis}
 %\VignettePackage{splicegear}
@@ -51,14 +52,23 @@ corresponding probe intensities. It it constituted of three
 attributes, \Robject{eset}, \Robject{probes} and
 \Robject{spliceSites}, the first being of class \Robject{exprSet} 
 the second of class \Robject{Probes} and the
-third of class \Robject{SpliceSites}. The underlying concept behind the
+third of class \Robject{SpliceSites}. The idea behind the
 clear separation between splice site positions, probes and probe intensities
 is the dynamic nature of their relationship. While the sequence for
 the probe is fixed, the target sequences can vary slightly and the
 position or presence of splice sites as well (especially when working with
 putative splice sites).
 
-The package is loaded by a simple call of \Rfunction{library}:x
+The view chosen is appropriate for linking alternative splicing
+information with microarray data, but is admitedly not very standard
+on the alternative splicing side. 
+Many representations of alternative splicing show exons as boxes and
+draw broken lines between segments to show the possible splice variants.
+The model chosen is not completely incompatible with this view. We
+present how to use this representation within the package in one of
+the last sections below.
+
+The package is loaded by a simple call of \Rfunction{library}:
 <<R.hide, results=hide, echo=FALSE>>=
 library(splicegear)
 @
@@ -73,7 +83,7 @@ The expression values from the {\it GeneLogic} `Dilution' dataset
 (RNA extracted from cells from the central nervous system and from the
 liver) were observed.
 
-<<<>>=
+<<<fig=TRUE>>=
 data(spsites.Hs.44)
 
 print(spsites.Hs.44)
@@ -81,7 +91,7 @@ print(spsites.Hs.44)
 plot(spsites.Hs.44)
 @ 
 
-\section*{data in `data.frame'}
+\section*{data in a \Rclass{data.frame}}
 The \Rclass{data.frame} has a very important role in the S
 language. A large number of function are designed around this data
 structure. We provide a way to link the class \Robject{SpliceExprSet}
@@ -100,7 +110,19 @@ lm.panel <- function(x, y, ...) {
 ## probe intensity values conditioned by the position of the probes on
 ## the mRNA
 coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
-
 @
+
+\section*{Genomic view}
+A popular representation of splice variants shows exons as boxes,
+linked by broken lines to show which exons are skipped and which ones
+are not for the splice variants~\ref{fig:genomic.AS}
+
+\begin{figure}[htbp]
+\begin{center}
+%\includegraphics[width=\textwidth]{HASDB.spliceview}
+%\includegraphics[width=\textwidth]{transcript.geneview.Hs.4291}
+\caption{\label{fig:genomic.AS}More common representation of alternative splicing.}
+\end{center}
+\end{figure}
 
 \end{document}

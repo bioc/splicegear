@@ -1,1 +1,1 @@
-require(Biobase)
+require(methods)

@@ -20,6 +20,7 @@
   require(Biobase, quietly=TRUE) || stop("The package 'Biobase' is required !")
 
   .initSpliceSitesMethods(where=where)
+  .initSpliceSitesGenomicMethods(where=where)
   .initSpliceExprSetMethods(where=where)
   .initProbes(where=where)
   ##where <- match(paste("package:", pkgname, sep=""), search())
