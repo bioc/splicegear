@@ -23,7 +23,7 @@ getPALSdbURL(query, disp = c("data", "browser"),
             ident.threshold = c("90% 50b", "95% 50b", "90% 45b"),
             verbose = FALSE)
 
-buildSpliceSites(xml)
+buildSpliceSites(xml, verbose=TRUE)
 }
 \arguments{
   \item{query}{query string}
