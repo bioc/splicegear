@@ -1,12 +1,12 @@
 as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
-
-    if (! is(x, "SpliceExprSet"))
-        stop("the argument should inherit class 'SpliceExprSet'")
+  
+  if (! inherits(x, "SpliceExprSet"))
+    stop("the argument should inherit class 'SpliceExprSet'")
 
   spSites <- x@spliceSites
   eset <- x@eset
   probes <- x@probes
-
+  
   nc.eset <- ncol(exprs(eset))
   nr.eset <- nrow(exprs(eset))
 
@@ -15,17 +15,17 @@ as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
   if (nr.eset != nrow(probes@pos)) {
     stop("inconsistency beetween slots 'eset' and 'probes'")
   }
-
+  
   ## build the probe position column
   i.probes <- seq(1, nr.eset)
   i.probes.expand <- rep(i.probes, nc.eset)
-
+  
   ## build the 'is in type x' columns
   probeOnSpSite <- isProbeOnSpliceSite(probes, spSites)
 
   ## build the probe level intensities columns
   rv.eset <- as.data.frame.exprSet(eset)
-
+  
   rv <- do.call("data.frame", c(list(begin = probes@pos[, 1][i.probes.expand],
                                      end = probes@pos[, 2][i.probes.expand],
                                      isintypeI = probeOnSpSite$isintypeI[i.probes.expand],
@@ -34,6 +34,6 @@ as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
                                 lapply(probes@info, function(x, i) return(x[i]), i.probes.expand)
                                 )
                 )
-
+  
   return(rv)
 }
