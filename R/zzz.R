@@ -17,7 +17,7 @@
 
   if (message) {
     cat("splicegear loaded.\n")
-    if ("1.3.25" > package.description("Biobase")[c("Version")]) {
+    if ("1.3.25" > packageDescription("Biobase")[c("Version")]) {
       cat("Please source the function 'as.data.frame.exprSet' available at\n",
           "http://www.cbs.dtu.dk/laurent/download/splicegear/")
     }
