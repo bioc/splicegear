@@ -1,10 +1,6 @@
 \name{Probes-class}
 \docType{class}
 \alias{Probes-class}
-\alias{initialize}
-\alias{show}
-\alias{plot}
-\alias{plot}
 
 \alias{initialize,Probes-method}
 \alias{show,Probes-method}
