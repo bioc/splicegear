@@ -1,6 +1,20 @@
 \name{Probes-class}
 \docType{class}
 \alias{Probes-class}
+\alias{initialize}
+\alias{show}
+\alias{plot}
+\alias{plot}
+
+\alias{initialize,Probes-method}
+\alias{show,Probes-method}
+\alias{plot,Probes-method}
+\alias{plot,Probes-method}
+\alias{grid.plot,Probes,missing-method}
+\alias{grid.plot,Probes,SpliceSites-method}
+\alias{plot,Probes,missing-method}
+\alias{plot,Probes,SpliceSites-method}
+
 \title{Class "Probes" }
 \description{Information about a set of probes }
 \section{Objects from the Class}{

@@ -1,6 +1,10 @@
 \name{SpliceSitesGenomic-class}
 \docType{class}
 \alias{SpliceSitesGenomic-class}
+
+\alias{plot,SpliceSitesGenomic-method}
+\alias{plot,SpliceSitesGenomic,missing-method}
+
 \title{Class "SpliceSitesGenomic" }
 \description{A class to store alternative splicing information on a
   genomic point of view}

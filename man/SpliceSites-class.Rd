@@ -1,6 +1,12 @@
 \name{SpliceSites-class}
 \docType{class}
 \alias{SpliceSites-class}
+
+\alias{show,SpliceSites-method}
+\alias{plot,SpliceSites-method}
+\alias{initialize,SpliceSites-method}
+\alias{plot,SpliceSites,missing-method}
+
 \title{Class "SpliceSites"}
 \description{ A class to store (putative) splice sites }
 \section{Objects from the Class}{

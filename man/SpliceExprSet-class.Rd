@@ -1,10 +1,18 @@
 \name{SpliceExprSet-class}
 \docType{class}
 \alias{SpliceExprSet-class}
+
+\alias{grid.plot}
+\alias{spliceSites}
+\alias{grid.plot.SpliceExprSet}
 \alias{grid.plot,SpliceExprSet,missing-method}
 \alias{plot,SpliceExprSet,missing-method}
 \alias{show,SpliceExprSet-method}
 \alias{spliceSites,SpliceExprSet-method}
+\alias{exprs,SpliceExprSet-method}
+\alias{exprs<-,SpliceExprSet-method}
+\alias{grid.plot,SpliceSites,missing-method}
+
 
 \title{Class "SpliceExprSet"}
 \description{A class to store probe expression values with alternative
