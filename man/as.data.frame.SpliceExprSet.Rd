@@ -20,11 +20,17 @@ as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA)
   the large amount of functions working on data.frames.
 }
 \value{
-A \code{data.frame}.
+A \code{data.frame}. The first variable names are \code{begin},
+\code{end}, \code{isintypeI}, \code{isintypeII}, \code{exprs} and
+\code{genenames}. The next variable names will the ones in the
+\code{\link[Biobase]{phenoData-class} attribute of the
+  \code{\link[Biobase]{exprSet-class}} object belonging the
+  \code{\link{SpliceExprSet-class}}. The last variable names will be the
+  ones in the slot \code{info} of the \code{\link{Probes-class}} object.}
 }
 \author{ Laurent }
 
-\seealso{  }
+\seealso{ }
 \examples{
 data(spliceset.Hs.44)
 

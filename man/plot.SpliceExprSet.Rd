@@ -37,7 +37,7 @@ levels(pData(speset@eset)$Material)
 ## Liver, Mix and SNB19
 cl.mat <- c("red", "yellow","blue")[as.integer(pData(speset@eset)$Material)]
 ## colored in red, yellow and blue respectively
-plot(speset, expr.opt=list(col=cl.mat))
+plot(speset, expr.opt=list(col=cl.mat, log="x"))
 
 begin.pos <- speset@probes@pos[,1]
 plot(speset, expr.opt=list(col=cl.mat), probespos.yscale=begin.pos)

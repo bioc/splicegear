@@ -41,7 +41,8 @@ as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
                                      end = probes@pos[, 2][i.probes.expand],
                                      isintypeI = probeOnSpSite$isintypeI[i.probes.expand],
                                      isintypeII = probeOnSpSite$isintypeII[i.probes.expand]),
-                                lapply(rv.eset, function(x) {return(x)})
+                                lapply(rv.eset, function(x) return(x)),
+                                lapply(probes@info, function(x, i) return(x[i]), i.probes.expand)
                                 )
                 )
                 

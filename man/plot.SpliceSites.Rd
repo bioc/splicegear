@@ -9,12 +9,16 @@
 plot.Probes(x, col="black", add=FALSE,
             probepos.yscale=NULL, xlim=NULL, ...)
 plot.SpliceSites(x, col.typeI = "greenyellow",
+            col.typeI.window = "yellow",
+            col.typeII = "red",
             add=FALSE, ylim=NULL, ...)
 }
 \arguments{
   \item{x}{ object of class \code{Probes} or \code{SpliceSites}. }
   \item{col}{ color argument for the probes. }
   \item{col.typeI}{ color argument for the type I splice sites }
+  \item{col.typeI.window}{ color argument for the type I `window' }
+  \item{col.typeII}{ color argument for the type II splice sites }
   \item{add}{ add the plot to an existing plot. Make a new plot if `FALSE'}
   \item{probepos.yscale}{ scaling argument }
   \item{fig.yratio}{ a vector of length 2 giving the ratio of the 2

@@ -1,4 +1,4 @@
-plot.SpliceSites <- function(x, col.typeI="greenyellow", add=FALSE, ylim=NULL, ...) {
+plot.SpliceSites <- function(x, col.typeI="greenyellow", col.typeI.window="yellow", col.typeII="red", add=FALSE, ylim=NULL, ...) {
 
   ## type I splice sites
   if (nrow(x@spsiteIpos) > 0) {
@@ -16,7 +16,9 @@ plot.SpliceSites <- function(x, col.typeI="greenyellow", add=FALSE, ylim=NULL, .
     plot(x=0, y=0,
          xlab="seq", ylab="splice variants",
          xlim=xlim, ylim=ylim,
-         type="n", ...)
+         type="n",
+         yaxt="n",
+         ...)
   
   } else {
     if (is.null(ylim))
@@ -26,11 +28,11 @@ plot.SpliceSites <- function(x, col.typeI="greenyellow", add=FALSE, ylim=NULL, .
   ## plot type I splice sites
   for (i in spliceI.pos)
     rect(min(x@spsiteIpos[i, ]), ylim[1], max(x@spsiteIpos[i, ]), ylim[2],
-         col="yellow", border="transparent" )
+         col=col.typeI.window, border="transparent" )
 
   ## plot type II splice sites
   for (i in seq(along=x@spsiteIIpos))
-    segments(x@spsiteIIpos[i], ylim[1], x@spsiteIIpos[i], ylim[2], col="red")
+    segments(x@spsiteIIpos[i], ylim[1], x@spsiteIIpos[i], ylim[2], col=col.typeII)
 
   ## plot type III splice sites
   if (nrow(x@spsiteIIIpos) > 0) {
