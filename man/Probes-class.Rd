@@ -23,6 +23,7 @@
 \section{Methods}{
   \describe{
     \item{initialize}{\code{signature(.Object = "Probes")}: ... }
+    \item{show}{\code{signature(object)}: show minimal information}
     \item{plot}{\code{signature(x = "Probes", y = "missing")}: plot the
       position of the probes. (see \code{\link{plot.Probes}}) }
     \item{plot}{\code{signature(x = "Probes", y = "SpliceSites")}: plot

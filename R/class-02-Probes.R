@@ -15,6 +15,12 @@ setMethod("initialize", "Probes",
             return(.Object)
           })
 
+setMethod("show", "Probes",
+          function(object) {
+            cat("Probes object:\n")
+            cat(" ", nrow(object@pos), "probe(s)\n")
+          })
+
 if( !isGeneric("plot") )
   setGeneric("plot", function(x, y, ...)
              standardGeneric("plot"))

@@ -21,8 +21,6 @@ plot.SpliceSites(x, col.typeI = "greenyellow",
   \item{col.typeII}{ color argument for the type II splice sites }
   \item{add}{ add the plot to an existing plot. Make a new plot if `FALSE'}
   \item{probepos.yscale}{ scaling argument }
-  \item{fig.yratio}{ a vector of length 2 giving the ratio of the 2
-    parts of the plot (see details). }
   \item{xlim}{range of plotting window}
   \item{ylim}{range of plotting window}
   \item{\dots}{ optional parameters to be passed to the function \code{plot}. }
@@ -34,11 +32,11 @@ plot.SpliceSites(x, col.typeI = "greenyellow",
   The two functions can be combined to display both objects on the same plot.
 }
 \value{
-  The range of $y$ values.
+  The range for the y-axis is returned whenever needed (see \code{invisible}).
 }
-\references{"Standardazed output for putative alternative splicing: application to the study of 
-splice variants with microarrays", Gautier L. et al., 2003, manuscript
-in preparation.}
+\references{"Standardized output for putative alternative splicing; a R package as an 
+application to combine them with microarray data", Gautier L. Dao C. and
+Yang U.C., 2003, submitted.}
 \author{ Laurent }
 
 \seealso{\code{\link{SpliceSites-class}}}
