@@ -182,15 +182,18 @@ dataf <- as.data.frame(spliceset)
 colnames(dataf)
 @ 
 
-<<fig=TRUE>>=
+%<<fig=TRUE>>=
+<<>>=
 lm.panel <- function(x, y, ...) {
                                   points(x,y,...)
                                   p.lm <- lm(y~x); abline(p.lm)
                                 }
 
-## probe intensity values conditioned by the position of the probes on
-## the mRNA
-coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
+## to plot probe intensity values conditioned by the position of the probes on
+## the mRNA:
+## (commented out to avoid a warning)
+##coplot(log(exprs) ~ Material | begin, data=dataf, panel=lm.panel)
+
 @
 Further explanations about formulas and models in {\bf S-plus} and {\bf R}
 can be found easily elsewhere.
@@ -261,7 +264,7 @@ mappings and splice variants information for certain types of chips.
 This was performed for {\it Affymetrix} chips and data packages providing
 the information will be distributed shortly.
 
-\appendix
+%\appendix
 
 %\label{appendix:dtd}
 
