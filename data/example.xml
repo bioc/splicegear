@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<!DOCTYPE PALSdbResultQuery SYSTEM "palsdb3.dtd">
+<PALSdbResultQuery>
+	<query> blabla     </query>
+	<PALSdbEntry>
+		<Head-info>
+			<Unigene-build-version>toto </Unigene-build-version>
+			<ug-cluster-id>Hs.47334</ug-cluster-id>
+
+			<ref-unigene-id>Hs#S3619235</ref-unigene-id>
+			<ref-gb-id>NM_032796</ref-gb-id>
+			<ref-len>2030</ref-len>
+			<ref-cds>93	1151</ref-cds>
+		</Head-info>
+		<AS-info>
+			<Alter-info>
+
+				<AS>
+					<AS-type>1</AS-type>
+
+					<Pos>269</Pos>
+					<Pos>309</Pos>
+
+				</AS>
+				<AS-type-base>
+
+					<Id1>99</Id1>
+					<Id2>97</Id2>
+					<Len1>250</Len1>
+					<Len2>652</Len2>
+					<Variant-size>39</Variant-size>
+				</AS-type-base>
+
+			</Alter-info>
+			<AS-seq-count>
+				<CDS-C>0</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>1</S-EST-C>
+				<O-EST-C>0</O-EST-C>
+
+				<DB-EST-C>0</DB-EST-C>
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>BI261918</Hit-gb-id>
+				<Hit-seq-type>SelfClusterEST</Hit-seq-type>
+				<Lib-info>
+					<Hit-lib>NIH_MGC_99</Hit-lib>
+
+					<Hit-tissue>uncharacterized tissue</Hit-tissue>
+					<Hit-histology>cancer</Hit-histology>
+				<Hit-cell-type>cell line</Hit-cell-type>
+				</Lib-info>
+			</AS-seq-info>
+		</AS-info>
+		<AS-info>
+
+			<Alter-info>
+				<AS>
+					<AS-type>1</AS-type>
+
+					<Pos>439</Pos>
+					<Pos>758</Pos>
+
+				</AS>
+
+				<AS-type-base>
+					<Id1>100</Id1>
+					<Id2>99</Id2>
+					<Len1>78</Len1>
+					<Len2>473</Len2>
+					<Variant-size>318</Variant-size>
+
+				</AS-type-base>
+			</Alter-info>
+			<AS-seq-count>
+				<CDS-C>0</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>1</S-EST-C>
+
+				<O-EST-C>0</O-EST-C>
+				<DB-EST-C>0</DB-EST-C>
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>AA643841</Hit-gb-id>
+				<Hit-seq-type>SelfClusterEST</Hit-seq-type>
+				<Lib-info>
+
+					<Hit-lib>NCI_CGAP_Pr22</Hit-lib>
+					<Hit-tissue>prostate</Hit-tissue>
+					<Hit-histology>normal</Hit-histology>
+				<Hit-cell-type>bulk</Hit-cell-type>
+				</Lib-info>
+			</AS-seq-info>
+		</AS-info>
+
+		<AS-info>
+			<Alter-info>
+				<AS>
+					<AS-type>1</AS-type>
+
+					<Pos>581</Pos>
+					<Pos>793</Pos>
+
+				</AS>
+				<AS-type-base>
+					<Id1>96</Id1>
+					<Id2>99</Id2>
+					<Len1>111</Len1>
+					<Len2>495</Len2>
+					<Variant-size>211</Variant-size>
+
+				</AS-type-base>
+			</Alter-info>
+			<AS-seq-count>
+				<CDS-C>0</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>2</S-EST-C>
+
+				<O-EST-C>0</O-EST-C>
+				<DB-EST-C>0</DB-EST-C>
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>AI814531</Hit-gb-id>
+				<Hit-seq-type>SelfClusterEST</Hit-seq-type>
+				<Lib-info>
+
+					<Hit-lib>NCI_CGAP_Lu19</Hit-lib>
+					<Hit-tissue>lung</Hit-tissue>
+					<Hit-histology>cancer</Hit-histology>
+				<Hit-cell-type>bulk</Hit-cell-type>
+				</Lib-info>
+			</AS-seq-info>
+			<AS-seq-info>
+
+				<Hit-gb-id>AI923671</Hit-gb-id>
+				<Hit-seq-type>SelfClusterEST</Hit-seq-type>
+				<Lib-info>
+					<Hit-lib>NCI_CGAP_Lu19</Hit-lib>
+					<Hit-tissue>lung</Hit-tissue>
+					<Hit-histology>cancer</Hit-histology>
+
+				<Hit-cell-type>bulk</Hit-cell-type>
+				</Lib-info>
+			</AS-seq-info>
+		</AS-info>
+	</PALSdbEntry>
+	<PALSdbEntry>
+		<Head-info>
+			<Unigene-build-version>toto </Unigene-build-version>
+
+			<ug-cluster-id>Hs.81218</ug-cluster-id>
+			<ref-unigene-id>Hs#S1729544</ref-unigene-id>
+			<ref-gb-id>NM_005055</ref-gb-id>
+			<ref-len>1664</ref-len>
+			<ref-cds>214	1452</ref-cds>
+		</Head-info>
+
+		<AS-info>
+			<Alter-info>
+				<AS>
+					<AS-type>1</AS-type>
+
+					<Pos>997</Pos>
+					<Pos>1178</Pos>
+
+				</AS>
+				<AS-type-base>
+					<Id1>98</Id1>
+					<Id2>98</Id2>
+					<Len1>997</Len1>
+					<Len2>490</Len2>
+					<Variant-size>180</Variant-size>
+
+				</AS-type-base>
+			</Alter-info>
+			<AS-seq-count>
+				<CDS-C>2</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>0</S-EST-C>
+
+				<O-EST-C>0</O-EST-C>
+				<DB-EST-C>0</DB-EST-C>
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>NM_032645</Hit-gb-id>
+				<Hit-seq-type>cds</Hit-seq-type>
+			</AS-seq-info>
+
+			<AS-seq-info>
+				<Hit-gb-id>BC004196</Hit-gb-id>
+				<Hit-seq-type>cds</Hit-seq-type>
+			</AS-seq-info>
+		</AS-info>
+		<AS-info>
+			<Alter-info>
+				<AS>
+
+					<AS-type>2</AS-type>
+
+					<Pos>1001</Pos>
+					<Pos>0</Pos>
+
+				</AS>
+				<AS-type-base>
+					<Id1>94</Id1>
+
+					<Id2>92</Id2>
+					<Len1>98</Len1>
+					<Len2>136</Len2>
+					<Variant-size>91</Variant-size>
+				</AS-type-base>
+			</Alter-info>
+			<AS-seq-count>
+
+				<CDS-C>0</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>0</S-EST-C>
+				<O-EST-C>0</O-EST-C>
+				<DB-EST-C>1</DB-EST-C>
+
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>AA214254</Hit-gb-id>
+				<Hit-seq-type>dbEST</Hit-seq-type>
+			</AS-seq-info>
+		</AS-info>
+		<AS-info>
+			<Alter-info>
+
+				<AS>
+					<AS-type>1</AS-type>
+
+					<Pos>1126</Pos>
+					<Pos>1381</Pos>
+
+				</AS>
+				<AS-type-base>
+
+					<Id1>96</Id1>
+					<Id2>99</Id2>
+					<Len1>119</Len1>
+					<Len2>284</Len2>
+					<Variant-size>254</Variant-size>
+				</AS-type-base>
+
+			</Alter-info>
+			<AS-seq-count>
+				<CDS-C>0</CDS-C>
+				<C-CDS-C>0</C-CDS-C>
+				<C-SEQ-C>0</C-SEQ-C>
+				<S-EST-C>1</S-EST-C>
+				<O-EST-C>0</O-EST-C>
+
+				<DB-EST-C>0</DB-EST-C>
+			</AS-seq-count>
+			<AS-seq-info>
+				<Hit-gb-id>AI269163</Hit-gb-id>
+				<Hit-seq-type>SelfClusterEST</Hit-seq-type>
+				<Lib-info>
+					<Hit-lib>Soares_NhHMPu_S1</Hit-lib>
+
+					<Hit-tissue>pooled tissue</Hit-tissue>
+					<Hit-histology>normal</Hit-histology>
+				<Hit-cell-type>bulk</Hit-cell-type>
+				</Lib-info>
+			</AS-seq-info>
+		</AS-info>
+	</PALSdbEntry>
+
+</PALSdbResultQuery>
