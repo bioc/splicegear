@@ -1,0 +1,8 @@
+Package: splicegear
+Title: splicegear
+Version: 0.1
+Author: Laurent
+Description: A set of tools to mangle with alternative splicing
+Maintainer: Laurent <laurent@cbs.dtu.dk>
+License: LGPL
+Depends: R (>= 1.6.0), bioseq (>=1.2.0)
