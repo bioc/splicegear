@@ -10,7 +10,13 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     return(r)
   }
   
-  resultQuery <- xml$doc$children[["ResultQuery"]]
+  resultQuery <- xmlChildren(xml$doc$children[["ResultQuery"]])
+
+  query.status <- as.character(xmlChildren(resultQuery[["query"]][["query-status"]])$text)[6]
+
+  if (query.status != "OK") {
+    stop(paste("Query status is:", query.status))
+  }
   
   entries.i <- which(names(resultQuery) == "Entry")
 

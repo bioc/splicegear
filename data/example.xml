@@ -1,8 +1,158 @@
 <?xml version="1.0"?>
-<!DOCTYPE ResultQuery SYSTEM "palsdb3.dtd">
+<!DOCTYPE ResultQuery [<!-- Laurent Gautier, Cedric Dao 2003 - GPL licence -->
+<!-- This is open source -->
+
+<!-- DTD for XML output for PALSdb -->
+
+<!-- This is a (functioning) proposal of data format. Please refer to the submitted companion
+     paper for further details. -->
+
+<!-- The result of a query could be several 'Entry' (see below) -->
+<!ELEMENT ResultQuery (query, Entry*)>
+
+  <!-- the query itself (the URL with the parameters) and
+       its returning status (for error processing in XML format) -->
+  <!ELEMENT query (query-info, query-status)>
+    <!ELEMENT query-info ( #PCDATA )>
+    <!ELEMENT query-status ( #PCDATA )>
+
+  <!-- An entry is constituted by a reference sequence (and associated informations)
+       with putative splice sites (entry 'Alt_splice') -->
+  <!-- note: As things are done below, the reference sequence can only be from Unigene,
+       and must have GenBank id related to it (see comments below for details) -->   
+  <!ELEMENT Entry (Reference-sequence, Splice-variant*, Alt-Splice* )>
+    <!ELEMENT Reference-sequence ( Unigene-build-version,
+                                   ug-cluster-id,
+	                           ref-unigene-id,
+		                   ref-gb-id,
+		                   ref-len,
+				   ref-seq?,
+		                   ref-cds?
+		                 )>
+
+      <!-- Builds of Unigene are used to build PALSdb -->
+      <!ELEMENT Unigene-build-version (Human, Mouse )>
+        <!ELEMENT Human ( #PCDATA )>
+        <!ELEMENT Mouse ( #PCDATA )>
+
+      <!-- UniGene Cluster id of a unique gene--> 
+      <!ELEMENT ug-cluster-id ( #PCDATA )>
+
+      <!-- UniGene accession number of the reference sequence used to collect AS informations in PALSdb -->
+      <!ELEMENT ref-unigene-id ( #PCDATA )>
+
+      <!-- GenBank accession number of the reference sequence -->
+      <!ELEMENT ref-gb-id ( #PCDATA )>
+
+      <!-- length of the reference sequence -->
+      <!ELEMENT ref-len ( #PCDATA )>
+
+      <!-- the reference sequence itself -->
+      <!ELEMENT ref-seq ( #PCDATA )>
+
+      <!-- start and stop position of the reference sequence if it is a known coding sequence-->
+      <!ELEMENT ref-cds ( #PCDATA )>
+
+      <!-- Sequence of 'Alt-splice' indices giving a known splice variant. -->
+      <!-- Ex: (1,3,4) would mean that the Alt_Splice elements 1, 3 and 4 combine to give a known splice variant --> 
+      <!ELEMENT Splice-variant (#PCDATA) >
+
+      <!-- Putative Splice Site(s). With information about the putative splice site itself, and all the 'hit' matching with this site -->
+      <!ELEMENT Alt-Splice ( Site-info, Hit-count, Hit-info* )>
+      <!-- attribute of Alt-Splice which can be of type 1 or 2 -->
+      <!ATTLIST Alt-Splice Type (1|2) #REQUIRED>
+        <!ELEMENT Site-info ( Pos+,
+                              Id1,
+	    	              Id2,  
+		              Len1,
+			      Len2,
+			      Variant-size
+		            )>
+
+      <!-- positions on the reference sequence (for AS type2, only one position because the unaligned fragment is on the target sequence, not the reference sequence)-->
+      <!ELEMENT Pos ( #PCDATA )> 
+
+      <!-- % of identity  for the match (left side) -->
+      <!ELEMENT Id1 ( #PCDATA )> 
+
+      <!-- % of identity  for the match (right side) -->
+      <!ELEMENT Id2 ( #PCDATA )> 
+
+      <!-- length of the match (left side) -->
+      <!ELEMENT Len1 ( #PCDATA )> 
+
+      <!-- length of the match (right side) -->
+      <!ELEMENT Len2 ( #PCDATA )> 
+
+      <!-- length change: for AS type 1, this means the candidate AS sequences may lack a fragment of this length. For AS type 2, this means the candidate sequence contains an additional fragment of this length.-->
+      <!ELEMENT Variant-size ( #PCDATA )>
+
+      <!--number of supporting evidences from different sequence sources. -->
+      <!ELEMENT Hit-count ( CDS-C, 
+                            C-CDS-C,
+                            C-SEQ-C, 
+		            S-EST-C, 
+			    O-EST-C,
+			    DB-EST-C
+			  )>
+
+       <!-- number of coding sequences -->
+       <!ELEMENT CDS-C ( #PCDATA )>
+
+       <!-- number of complete coding sequences --> 
+       <!ELEMENT C-CDS-C ( #PCDATA )>
+
+       <!-- number of complete sequences -->
+       <!ELEMENT C-SEQ-C ( #PCDATA )>
+
+       <!-- number of EST sequences from this UniGene (self) cluster -->
+       <!ELEMENT S-EST-C ( #PCDATA )>
+
+       <!-- number of EST sequences from other UniGene cluster (paralogous gene) -->
+       <!ELEMENT O-EST-C ( #PCDATA )>
+
+       <!-- number of EST sequences from non-clustered EST sequences (dbEST) -->
+       <!ELEMENT DB-EST-C ( #PCDATA )>
+
+       <!ELEMENT Hit-info ( Hit-gb-id,
+                            Hit-seq-type,
+                            Hit-lib?,
+	                    Hit-tissue?,
+			    Hit-histology?,
+			    Hit-cell-type?,
+			    Hit-other-info*
+			  )>
+			  
+       <!-- GenBank accession number of sequences supporting this ASSP -->
+       <!ELEMENT Hit-gb-id ( #PCDATA )>
+
+       <!-- source of the sequence containing AS information -->
+       <!ELEMENT Hit-seq-type ( #PCDATA )>
+
+       <!-- cloning library title of the EST sequence -->
+       <!ELEMENT Hit-lib ( #PCDATA )> 
+
+       <!-- tissue type of the library -->
+       <!ELEMENT Hit-tissue ( #PCDATA )>
+
+       <!-- histology of the library -->
+       <!ELEMENT Hit-histology ( #PCDATA )>
+
+       <!-- cell type of the library -->
+       <!ELEMENT Hit-cell-type ( #PCDATA )>
+
+       <!-- other kind of info about the hit. -->
+       <!-- The first #PCDATA is a name for the information type, the second #PCDATA the information itself -->
+       <!ELEMENT Hit-other-info ( other-name, other-info)>
+          <!ELEMENT other-name ( #PCDATA )>
+          <!ELEMENT other-info ( #PCDATA )>
+
+
+]>
+
 <ResultQuery>
 	<query>
-		<query-info>http://140.129.151.155/~laurent/cgi-bin/palsdbbig_xml.cgi?field=A&amp;keyword=alcohol&amp;format=xml&amp;submit=Submit&amp;species=human&amp;constraint=C</query-info>
+		<query-info>http://140.129.151.30/cgi-bin/palsdbbig_xml.cgi?field=A&amp;keyword=alcohol&amp;format=xml&amp;submit=Submit&amp;species=human&amp;constraint=B</query-info>
 		<query-status>OK</query-status>
 	</query>
 	<Entry>
