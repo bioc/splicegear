@@ -25,7 +25,7 @@
 
   if(.Platform$OS.type == "windows" && require(Biobase) && interactive()
         && .Platform$GUI ==  "Rgui"){
-        addPDF2Vig("splicegear")
+        addVigs2WinMenu("splicegear")
     }
 
 }
