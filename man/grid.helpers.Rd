@@ -16,7 +16,7 @@ grid.numeric2npc(x, xlim=NULL, lower.blank=0, upper.blank=0
   \item{parlist}{ list of parameters }
   \item{x}{numeric value}
   \item{xlim}{range for Xs}
-  \item{lower.blank, lower.blank}{size for margins}
+  \item{lower.blank}{size for margins}
 }
 \details{
   call the function \code{gpar} on the list of parameters.
@@ -27,4 +27,7 @@ grid.numeric2npc(x, xlim=NULL, lower.blank=0, upper.blank=0
 \seealso{ \code{\link[grid]{lattice}}}
 }
 \keyword{ hplot }
+
+
+
 
