@@ -10,8 +10,8 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     return(r)
   }
   
-  resultQuery <- xml$doc$children["ResultQuery"][[1]]
-
+  resultQuery <- xml$doc$children[["ResultQuery"]]
+  
   entries.i <- which(names(resultQuery) == "Entry")
 
   n.EST.hit <- sum(unlist(lapply(resultQuery[entries.i],
@@ -121,7 +121,7 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
                  histology = pData.histology[spsiteIIpos.i],
                  site = pData.site[spsiteIIpos.i])
     
-    spsites.list[[i]] <- new("SpliceSites", seq.len = seq.len,
+    spsites.list[[i]] <- new("SpliceSites", seq.length = seq.len,
                              spsiteIpos = spsiteIpos,
                              spsiteIIpos = spsiteIIpos,
                              spsiteIpos.pData = spsiteIpos.pData,

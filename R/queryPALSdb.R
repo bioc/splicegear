@@ -7,8 +7,8 @@ getPALSdbURL <- function(query, disp = c("data", "browser"),
 
   require(annotate, quietly=TRUE) || stop()
   
-  ##url.base <- "http://140.129.151.131/cgi-bin/palsdb/big_xml.cgi"
-  url.base <- "http://140.129.151.155/~laurent/cgi-bin/palsdb/big_xml.cgi"
+  url.base <- "http://palsdb.ym.edu.tw/cgi-bin/palsdb/big_xml.cgi"
+  ##url.base <- "http://140.129.151.155/~laurent/cgi-bin/palsdb/big_xml.cgi"
 
   disp <- match.arg(disp)
   field <- match.arg(field)
