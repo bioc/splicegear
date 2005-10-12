@@ -8,7 +8,7 @@
 }
 \usage{
 grid.expand.gp(n, parlist = list())
-grid.numeric2npc(x, xlim=NULL, lower.blank=0, upper.blank=0
+grid.make.numeric2npc(x, xlim=NULL, lower.blank=0, upper.blank=0)
 
 }
 \arguments{

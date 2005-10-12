@@ -1,7 +1,7 @@
 \name{grid.plot.Probes}
 \alias{grid.plot.Probes}
 \alias{grid.plot.SpliceSites}
-\alias{grid.plot.SpliceSitesExprSet}
+\alias{grid.plot.SpliceExprSet}
 
 \title{ Plot splicegear objects }
 \description{
@@ -15,7 +15,7 @@ grid.plot.SpliceSites(x, col.typeI = "orange", col.typeI.window = "yellow",
     col.typeII = "red", add = FALSE, ylim = NULL, vp = NULL, 
     ...)
 
-grid.plot.SpliceExprSet(function (x, probes.opt = list(), expr.opt = list(col = NA, lty = 1:6),
+grid.plot.SpliceExprSet(x, probes.opt = list(), expr.opt = list(col = NA, lty = 1:6),
     fig.xratio = c(2, 1), fig.yratio = c(2, 1), probepos.yscale = NULL,
     ylim = NULL, ...)
 }
@@ -33,6 +33,9 @@ grid.plot.SpliceExprSet(function (x, probes.opt = list(), expr.opt = list(col = 
   \item{expr.opt}{list of options to plot expression values}
   \item{probepos.yscale}{ specify coordinates on the y-axis for the
 probes.}
+  \item{probes.opt}{options to plot the probes}
+  \item{fig.xratio}{ratio for the left and right parts of the plot}
+  \item{fig.yratio}{ratio for the upper and lower parts of the plot}
   \item{vp}{ a viewport (grid package stuff)}
   \item{xlim}{ range for the x-axis (see \code{plot}).}
   \item{ylim}{ range for the y-axis}

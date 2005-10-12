@@ -1,4 +1,4 @@
-split.SpliceSites <- function(x, f=list(typeI=NA, typeII=NA)) {
+split.SpliceSites <- function(x, f=list(typeI=NA, typeII=NA), drop=NULL, ...) {
 
   get.factor <- function(type.as, f) {
     

@@ -71,3 +71,4 @@ queryPALSdb <- function(query, disp = c("data", "browser"),
     browseURL(url)
   }
 }
+

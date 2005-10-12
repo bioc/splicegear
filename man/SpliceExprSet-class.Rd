@@ -4,7 +4,7 @@
 
 \alias{grid.plot}
 \alias{spliceSites}
-\alias{grid.plot.SpliceExprSet}
+%\alias{grid.plot.SpliceExprSet}
 \alias{grid.plot,SpliceExprSet,missing-method}
 \alias{plot,SpliceExprSet,missing-method}
 \alias{show,SpliceExprSet-method}

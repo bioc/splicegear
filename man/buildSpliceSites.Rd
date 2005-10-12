@@ -10,18 +10,16 @@
 }
 \usage{
 queryPALSdb(query, disp = c("data", "browser"),
-            field = c("keyword", "ug_id", "gb_id", "cluster_count"),
+            field = c("keyword", "ug_id", "gb_id", "human.cytoband", "mouse.cytoband", "cluster_count"),
             species = c("human", "mouse"),
             e.value = "1e-1",
-            ident.threshold = c("90% 50b", "95% 50b", "90% 45b"),
-            verbose = FALSE)
+            ident.threshold = c("90\% 50b", "95\% 50b", "90\% 45b"))
 
 getPALSdbURL(query, disp = c("data", "browser"),
-            field = c("keyword", "ug_id", "gb_id", "cluster_count"),
+            field = c("keyword", "ug_id", "gb_id", "human.cytoband", "mouse.cytoband", "cluster_count"),
             species = c("human", "mouse"),
             e.value = "1e-1",
-            ident.threshold = c("90% 50b", "95% 50b", "90% 45b"),
-            verbose = FALSE)
+            ident.threshold = c("90\% 50b", "95\% 50b", "90\% 45b"))
 
 buildSpliceSites(xml, verbose=TRUE)
 }
@@ -32,7 +30,7 @@ buildSpliceSites(xml, verbose=TRUE)
   \item{disp}{(idem \code{\link[annotate]{genbank}} and \code{\link[annotate]{pubmed}})}
   \item{field}{The field on which the query will be based}
   \item{species}{the specie to work with}
-  \item{e.value}{}
+  \item{e.value}{E-value}
   \item{ident.threshold}{threshold for matching sequences}
   \item{verbose}{verbose output.}
 }

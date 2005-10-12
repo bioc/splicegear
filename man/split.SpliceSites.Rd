@@ -6,12 +6,14 @@
   Split an instance of SpliceSites into several instances of SpliceSites
 }
 \usage{
-split.SpliceSites(x, f = list(typeI = NA, typeII = NA))
+split.SpliceSites(x, f = list(typeI = NA, typeII = NA), drop=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ an instance of class \code{\link{SpliceSites-class}}.  }
   \item{f}{ a list of two factors (see details). }
+  \item{drop}{not used (here to keep R CMD check happy)}
+  \item{...}{see \code{drop} above.}
 }
 \details{
   The split usually is performed on a factor. Two factors are required
