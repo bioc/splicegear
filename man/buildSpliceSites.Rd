@@ -10,13 +10,13 @@
 }
 \usage{
 queryPALSdb(query, disp = c("data", "browser"),
-            field = c("keyword", "ug_id", "gb_id", "human.cytoband", "mouse.cytoband", "cluster_count"),
+            field = c("keyword", "ug.id", "gb.id", "human.cytoband", "mouse.cytoband", "cluster_count"),
             species = c("human", "mouse"),
             e.value = "1e-1",
             ident.threshold = c("90\% 50b", "95\% 50b", "90\% 45b"))
 
 getPALSdbURL(query, disp = c("data", "browser"),
-            field = c("keyword", "ug_id", "gb_id", "human.cytoband", "mouse.cytoband", "cluster_count"),
+            field = c("keyword", "ug.id", "gb.id", "human.cytoband", "mouse.cytoband", "cluster_count"),
             species = c("human", "mouse"),
             e.value = "1e-1",
             ident.threshold = c("90\% 50b", "95\% 50b", "90\% 45b"))
