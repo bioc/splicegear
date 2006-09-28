@@ -72,7 +72,7 @@ setMethod("grid.plot",
 
 
 ##setMethod("sort", signature(x = "SpliceExprSet"),
-sort.SpliceExprSet <- function(x, fun=function(x) order(x@probes@pos[, 1]), reverse=FALSE)
+sort.SpliceExprSet <- function(x, decreasing, fun=function(x) order(x@probes@pos[, 1]), reverse=FALSE, ...)
 {
   
   o <- fun(x)

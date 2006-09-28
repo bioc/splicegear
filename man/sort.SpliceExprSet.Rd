@@ -6,12 +6,14 @@
   relevant places.
 }
 \usage{
-sort.SpliceExprSet(x, fun = function(x) order(x@probes@pos[, 1]), reverse = FALSE)
+sort.SpliceExprSet(x, decreasing, fun = function(x) order(x@probes@pos[, 1]), reverse = FALSE, ...)
 }
 \arguments{
   \item{x}{ a \code{SpliceExprSet}.}
+  \item{decreasing}{ currently ignored }
   \item{fun}{ a function to do the sorting }
   \item{reverse}{ return the reverse of the sorting order }
+  \item{\dots}{currently ignored}
 }
 \details{
 

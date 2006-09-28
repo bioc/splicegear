@@ -1,4 +1,4 @@
-as.data.frame.SpliceSites <- function(x, row.names=NA, optional=NA) {
+as.data.frame.SpliceSites <- function(x, row.names=NA, optional=NA, ...) {
 
     if (! is(x, "SpliceSites"))
         stop("the argument should inherit class 'SpliceSites'")

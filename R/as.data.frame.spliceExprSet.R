@@ -1,4 +1,4 @@
-as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA) {
+as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA, ...) {
 
     if (! is(x, "SpliceExprSet"))
         stop("the argument should inherit class 'SpliceExprSet'")

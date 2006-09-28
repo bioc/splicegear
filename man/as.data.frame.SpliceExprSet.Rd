@@ -6,9 +6,9 @@
   Convert a SpliceExprSet object to a data.frame
 }
 \usage{
-as.data.frame.SpliceSites(x, row.names = NA, optional = NA)
+as.data.frame.SpliceSites(x, row.names = NA, optional = NA, ...)
 
-as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA)
+as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,6 +16,7 @@ as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA)
   \item{row.names}{ \code{NULL} or a character vector giving the row names for the
     data frame.  Missing values are not allowed}
   \item{optional}{ logical. If \code{TRUE}, setting row names is optional.}
+  \item{\dots}{currently ignored}
 }
 \details{
   Data are traditionally stored in objects of class \code{data.frame}.

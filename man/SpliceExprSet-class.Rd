@@ -10,7 +10,7 @@
 \alias{show,SpliceExprSet-method}
 \alias{spliceSites,SpliceExprSet-method}
 \alias{exprs,SpliceExprSet-method}
-\alias{exprs<-,SpliceExprSet-method}
+\alias{exprs<-,SpliceExprSet,ANY-method}
 \alias{grid.plot,SpliceSites,missing-method}
 
 
