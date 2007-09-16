@@ -8,9 +8,9 @@ setClass("SpliceSites",
                         spsiteIpos = "matrix", # a two-columns matrix (window for type I splice site),
                           spsiteIIpos = "integer", # position for type II splice site
                         spsiteIIIpos = "matrix", # a two-columns matrix (window for type III splice site),
-                        spsiteIpos.pData = "phenoData",
-                        spsiteIIpos.pData = "phenoData",
-                        spsiteIIIpos.pData = "phenoData"
+                        spsiteIpos.pData = "AnnotatedDataFrame",
+                        spsiteIIpos.pData = "AnnotatedDataFrame",
+                        spsiteIIIpos.pData = "AnnotatedDataFrame"
                         ))
 
 
@@ -48,9 +48,9 @@ setMethod("initialize", "SpliceSites",
                    spsiteIpos = matrix(0, 0, 0),
                    spsiteIIpos = integer(0),
                    spsiteIIIpos = matrix(0, 0, 0),
-                   spsiteIpos.pData = new("phenoData"),
-                   spsiteIIpos.pData = new("phenoData"),
-                   spsiteIIIpos.pData = new("phenoData"),
+                   spsiteIpos.pData = new("AnnotatedDataFrame"),
+                   spsiteIIpos.pData = new("AnnotatedDataFrame"),
+                   spsiteIIIpos.pData = new("AnnotatedDataFrame"),
                    ...)
           {
             if (seq == "" && seq.length == -1)

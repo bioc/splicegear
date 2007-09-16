@@ -39,9 +39,10 @@ grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
   }
 
   ##ylim <- range(ypos)
-    
-  if (is.null(ylim))
-    ylim <- m.ylim
+
+  ##FIXME: what was that ?
+  ##if (is.null(ylim))
+  ##  ylim <- m.ylim
   
 #     if (nrow(probes@pos) <= 1)
 #     ylim <- c(0,1)

@@ -6,7 +6,7 @@
   relevant places.
 }
 \usage{
-sort.SpliceExprSet(x, decreasing, fun = function(x) order(x@probes@pos[, 1]), reverse = FALSE, ...)
+\method{sort}{SpliceExprSet}(x, decreasing, fun = function(x) order(x@probes@pos[, 1]), reverse = FALSE, ...)
 }
 \arguments{
   \item{x}{ a \code{SpliceExprSet}.}

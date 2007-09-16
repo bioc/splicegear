@@ -2,10 +2,10 @@
 \alias{plot.SpliceSitesGenomic}
 \title{ Function to plot SpliceSitesGenomic objects }
 \description{
-  Function to plot SpliceSitesGenomic objects }
+  Function to plot SpliceSitesGenomic objects.
 }
 \usage{
-plot.SpliceSitesGenomic(x, col.variant = par("col"), col.exon = "white",
+\method{plot}{SpliceSitesGenomic}(x, col.variant = par("col"), col.exon = "white",
                         split = FALSE, main = names(x@variants), ...)
 }
 \arguments{

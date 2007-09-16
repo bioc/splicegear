@@ -121,13 +121,13 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
       spsiteIIpos <- unlist(spsiteIIpos[spsiteIIpos.i])
     
     ##spsiteIpos.pData <- new("phenoData", pData=data.frame(tissue = spsiteIpos.pData.tissue[spsiteIpos.i]))
-    spsiteIpos.pData <- new("phenoData")
-    spsiteIpos.pData@pData <-
+    spsiteIpos.pData <- new("AnnotatedDataFrame")
+    pData(spsiteIpos.pData) <-
       data.frame(tissue = pData.tissue[spsiteIpos.i],
                  histology = pData.histology[spsiteIpos.i],
                  site = pData.site[spsiteIpos.i])
-    spsiteIIpos.pData <- new("phenoData")
-    spsiteIIpos.pData@pData <-
+    spsiteIIpos.pData <- new("AnnotatedDataFrame")
+    pData(spsiteIIpos.pData) <-
       data.frame(tissue = pData.tissue[spsiteIIpos.i],
                  histology = pData.histology[spsiteIIpos.i],
                  site = pData.site[spsiteIIpos.i])

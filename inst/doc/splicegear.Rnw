@@ -54,7 +54,7 @@ The class \Robject{SpliceExprSet} combines information about putative
 splice sites on a sequence with probes matching the sequence and
 corresponding probe intensities. It it constituted of three
 attributes, \Robject{eset}, \Robject{probes} and
-\Robject{spliceSites}, the first being of class \Robject{exprSet} 
+\Robject{spliceSites}, the first being of class \Robject{ExpressionSet} 
 the second of class \Robject{Probes} and the
 third of class \Robject{SpliceSites}. The idea behind the
 clear separation between splice site positions, probes and probe intensities
@@ -104,9 +104,9 @@ The package has facilities to parse XML structures in a defined XML
 format 
 (see \url{http://palsdb.ym.edu.tw/index2.html})
 %(see Appendix~\ref{appendix:dtd}).
-Motivations are discussed in length
-in the companion reference for this documentation~\ref{laurent+etal:2003:submitted}.
-To summarize, we hope to initiate efficient data exchange for
+Motivations were discussed in length
+in a once submitted manuscript.
+To summarize, we hoped to initiate efficient data exchange for
 alternative splicing, in the spirit of the WDDX and SOAP
 formats. The DTD we introduce is more a call for discussion by interested
 parties. It is not fully compliant with WDDX nor SOAP, althought it may
@@ -208,13 +208,13 @@ is only likely to be skipped. The package features an experimental
 class that extends the class \Rclass{SpliceExprSet} and gives compatibility
 with this representation.
 
-\begin{figure}[htbp]
-\begin{center}
+%\begin{figure}[htbp]
+%\begin{center}
 %\includegraphics[width=\textwidth]{HASDB.spliceview}
 %\includegraphics[width=\textwidth]{transcript.geneview.Hs.4291}
-\caption{\label{fig:genomic.AS}More common representation of alternative splicing.}
-\end{center}
-\end{figure}
+%\caption{\label{fig:genomic.AS}More common representation of alternative splicing.}
+%\end{center}
+%\end{figure}
 
 <<>>=
 ## a 10 bp window
@@ -248,14 +248,14 @@ can be stored in the slot {\it info}.
 
 The class \Rclass{SpliceExprSet} is mainly an aggregation of an instance
 of class \Rclass{SpliceSites}, an instance of \Rclass{Probes} and an
-instance of class \Rclass{exprSet}.
+instance of class \Rclass{ExpressionSet}.
 
 The typical procedure is to build \Rclass{SpliceSites} and their
 correspondings \Rclass{Probes} for a type of chip\footnote{See the functions
 \Rfunction{queryPALSdb}, \Rfunction{buildSpliceSites} and the Bioconductor
 package \Rpackage{matchprobes}.}.
 Experimental hybridizations for the probes are stored in
-\Rclass{exprSet} objects. This design facilitates the use of the package
+\Rclass{ExpressionSet} objects. This design facilitates the use of the package
 in different contexts. For example, once the mapping of the probes has
 been performed and the data relative to alternative splicing have been
 acquired, the analyst can re-use these and combine them with data from different

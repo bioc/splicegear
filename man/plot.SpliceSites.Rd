@@ -6,11 +6,11 @@
   plot objects.
 }
 \usage{
-plot.Probes(x, col="black",
+\method{plot}{Probes}(x, col="black",
             xlab = "sequence", ylab = "probes",   
             add=FALSE, probepos.yscale=NULL, xlim=NULL,
             ...)
-plot.SpliceSites(x, col.typeI = "orange",
+\method{plot}{SpliceSites}(x, col.typeI = "orange",
             col.typeI.window = "yellow",
             col.typeII = "red",
             add=FALSE, ylim=NULL, ...)

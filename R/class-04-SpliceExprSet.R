@@ -8,7 +8,7 @@ require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
 setClass("SpliceExprSet",
          representation(spliceSites="SpliceSites",
                         probes = "Probes",
-                        eset="exprSet")) ## exprs: one row per probe,
+                        eset="ExpressionSet")) ## exprs: one row per probe,
 ## one column per experiment
 ## phenoData: covariate info.
 
@@ -98,7 +98,7 @@ sort.SpliceExprSet <- function(x, decreasing, fun=function(x) order(x@probes@pos
 
 ##  setMethod("isProbeOnSpliceSite", "SpliceExprSet",
 isSpliceSiteOnProbe <- function(spSites, probes) {
-  error("Not implemented (yet)")
+  stop("Not implemented (yet)")
 }
 ##, where=where)
 

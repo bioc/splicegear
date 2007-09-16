@@ -5,7 +5,7 @@
   Plot a object of class \code{SpliceExprSet}
 }
 \usage{
-plot.SpliceExprSet(x,
+\method{plot}{SpliceExprSet}(x,
                    probes.opt = list(), expr.opt = list(col = NA, lty = 1:6),
                    fig.xratio = c(2, 1), fig.yratio = c(2, 1),
                    probepos.yscale = NULL, ylim,
@@ -16,7 +16,7 @@ plot.SpliceExprSet(x,
   \item{probes.opt}{ optional parameters to be passed for the plotting of
     the \code{\link{Probes-class}} }
   \item{expr.opt}{ optional parameters to be passed for the plotting of
-    the \code{\link[Biobase]{exprSet-class}} }
+    the \code{\link[Biobase]{ExpressionSet-class}} }
   \item{fig.xratio}{ ratio between the left and right parts of the plot }
   \item{fig.yratio}{ ratio between the upper and lower parts of the plot }
   \item{probepos.yscale}{ enforce `y' positions for the probes. }

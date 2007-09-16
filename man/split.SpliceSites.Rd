@@ -6,7 +6,7 @@
   Split an instance of SpliceSites into several instances of SpliceSites
 }
 \usage{
-split.SpliceSites(x, f = list(typeI = NA, typeII = NA), drop=NULL, ...)
+\method{split}{SpliceSites}(x, f = list(typeI = NA, typeII = NA), drop=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

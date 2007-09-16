@@ -24,7 +24,11 @@ as.data.frame.SpliceExprSet <- function(x, row.names=NA, optional=NA, ...) {
   probeOnSpSite <- isProbeOnSpliceSite(probes, spSites)
 
   ## build the probe level intensities columns
-  rv.eset <- as.data.frame(eset)
+  rv.eset <- local({
+    X <- exprs(eset)
+    cbind(as.data.frame(lapply(pData(eset), rep, each=nrow(X))),
+                        exprs=c(X))
+        })
 
   rv <- do.call("data.frame", c(list(begin = probes@pos[, 1][i.probes.expand],
                                      end = probes@pos[, 2][i.probes.expand],

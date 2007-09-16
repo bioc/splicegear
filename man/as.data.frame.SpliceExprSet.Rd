@@ -6,9 +6,9 @@
   Convert a SpliceExprSet object to a data.frame
 }
 \usage{
-as.data.frame.SpliceSites(x, row.names = NA, optional = NA, ...)
+\method{as.data.frame}{SpliceSites}(x, row.names = NA, optional = NA, ...)
 
-as.data.frame.SpliceExprSet(x, row.names = NA, optional = NA, ...)
+\method{as.data.frame}{SpliceExprSet}(x, row.names = NA, optional = NA, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,7 +29,7 @@ A \code{data.frame}. For both functions the first column names are \code{begin},
 \code{genenames}.
 In the case of \code{as.data.frame.SpliceExprSet}, the next variable names will the ones in the
 \code{\link[Biobase]{phenoData-class}} attribute of the
-  \code{\link[Biobase]{exprSet-class}} object belonging the
+  \code{\link[Biobase]{ExpressionSet-class}} object belonging the
   \code{\link{SpliceExprSet-class}}. The last variable names will be the
   ones in the slot \code{info} of the \code{\link{Probes-class}} object.
 }

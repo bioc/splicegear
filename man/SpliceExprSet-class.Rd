@@ -27,7 +27,7 @@ Objects can be created by calls of the form \code{new("SpliceExprSet", ...)}.
     probes and splice site information.}
     \item{\code{probes}:}{Object of class \code{"Probes"}. The matching expression
       values.}
-    \item{\code{eset}:}{Object of class \code{"exprSet"}. The matching expression
+    \item{\code{eset}:}{Object of class \code{"ExpressionSet"}. The matching expression
       values.}
   }
 }

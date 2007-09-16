@@ -5,7 +5,7 @@
   Display a barplot of the associated phenoData
 }
 \usage{
-barplot.SpliceSites(height, type.as = c("typeI", "typeII", "all"),
+\method{barplot}{SpliceSites}(height, type.as = c("typeI", "typeII", "all"),
                     info = "tissue", ...)
 }
 %- maybe also 'usage' for other objects documented here.

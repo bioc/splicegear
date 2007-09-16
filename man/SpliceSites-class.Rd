@@ -31,11 +31,11 @@ Objects can be created by calls of the form \code{new("SpliceSites", ...)}.
       \code{spsiteIpos}, but for type III splice variants.
     }
     \item{\code{spsiteIpos.pData}:}{Object of class
-      \code{\link[Biobase]{"phenoData"}}. Used to store covariate
+      \code{\link[Biobase]{"AnnotatedDataFrame"}}. Used to store covariate
       information related to the splice variants}.
     \item{\code{spsiteIIpos.pData}:}{Object of class
-      \code{\link[Biobase]{"phenoData"}}}.
-    \item{\code{spsiteIIIpos.pData}:}{Object of class \code{\link[Biobase]{"phenoData"}}}. 
+      \code{\link[Biobase]{"AnnotatedDataFrame"}}}.
+    \item{\code{spsiteIIIpos.pData}:}{Object of class \code{\link[Biobase]{"AnnotatedDataFrame"}}}. 
   }
 }
 \section{Methods}{
