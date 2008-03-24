@@ -120,7 +120,6 @@ buildSpliceSites <- function(xml, verbose=TRUE) {
     else
       spsiteIIpos <- unlist(spsiteIIpos[spsiteIIpos.i])
     
-    ##spsiteIpos.pData <- new("phenoData", pData=data.frame(tissue = spsiteIpos.pData.tissue[spsiteIpos.i]))
     spsiteIpos.pData <- new("AnnotatedDataFrame")
     pData(spsiteIpos.pData) <-
       data.frame(tissue = pData.tissue[spsiteIpos.i],

@@ -10,7 +10,7 @@ setClass("SpliceExprSet",
                         probes = "Probes",
                         eset="ExpressionSet")) ## exprs: one row per probe,
 ## one column per experiment
-## phenoData: covariate info.
+## AnnotatedDataFrame: covariate info.
 
 ## -- accessors --
 if (is.null(getGeneric("spliceSites")))

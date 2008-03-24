@@ -56,7 +56,7 @@ split.SpliceSites <- function(x, f=list(typeI=NA, typeII=NA), drop=NULL, ...) {
   for (i in seq(along=r.I)) {
     r[[i]] <- new("SpliceSites", seq = x@seq, seq.length = x@seq.length,
                   spsiteIpos = as.matrix(r.I[[i]][, 1:2]),
-                  spsiteIpos.pData = new("phenoData", pData=r.I[[i]][, -c(1,2)],
+                  spsiteIpos.pData = new("AnnotatedDataFrame", pData=r.I[[i]][, -c(1,2)],
                     varLabels=as.list(names(r.I[[i]])[-c(1,2)]))
                   )
   }
@@ -64,7 +64,7 @@ split.SpliceSites <- function(x, f=list(typeI=NA, typeII=NA), drop=NULL, ...) {
   for (i in seq(along=r.II)) {
     r[[i+length(r.I)]] <- new("SpliceSites", seq = x@seq, seq.length = x@seq.length,
                               spsiteIIpos = as.integer(as.vector(r.II[[i]][, 1])),
-                              spsiteIIpos.pData = new("phenoData", pData=r.II[[i]][, -c(1)],
+                              spsiteIIpos.pData = new("AnnotatedDataFrame", pData=r.II[[i]][, -c(1)],
                                 varLabels=as.list(names(r.II[[i]])[-c(1)]))
                               )
   }

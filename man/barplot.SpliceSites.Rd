@@ -1,21 +1,20 @@
 \name{barplot.SpliceSites}
 \alias{barplot.SpliceSites}
-\title{ barplot for SpliceSites }
+\title{barplot for SpliceSites}
 \description{
-  Display a barplot of the associated phenoData
+  Displays a barplot of the associated AnnotatedDataFrame.
 }
 \usage{
 \method{barplot}{SpliceSites}(height, type.as = c("typeI", "typeII", "all"),
-                    info = "tissue", ...)
+                    info = "tissue", \dots)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{height}{ object of class \code{\link{SpliceSites-class}} }
-  \item{type.as}{ the type of alternative splicing (see
-    \code{SpliteSites-class} for futher details) }
-  \item{info}{ the name of the covariate in the phenoData (see details)}
-  \item{\dots}{ optional parameters to be passed to the underlying
-    function \code{\link{barplot}}. }
+  \item{height}{object of class \code{\link{SpliceSites-class}}.}
+  \item{type.as}{the type of alternative splicing (see
+    \code{SpliteSites-class} for further details).}
+  \item{info}{the name of the covariate in the AnnotatedDataFrame (see details).}
+  \item{\dots}{optional parameters to be passed to the underlying
+    function \code{\link{barplot}}.}
 }
 \details{
   When the objects are built from the XML format we propose as an
@@ -27,12 +26,9 @@
 \value{
   See the value returned by the function \code{\link{barplot}}.
 }
-\seealso{ \code{\link{SpliceSites-class}}, \code{\link{barplot}} }
+\seealso{\code{\link{SpliceSites-class}}, \code{\link{barplot}}}
 \examples{
-
 data(spsites)
-
 barplot(spsites)
-
 }
-\keyword{ hplot }
+\keyword{hplot}
