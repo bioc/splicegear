@@ -46,7 +46,7 @@ setMethod("show", signature(object = "SpliceExprSet"),
             cat("Alternative splicing expression set (SpliceExprSet):\n")
             cat("\t", ncol(exprs(object@eset)), " chip(s)\n", sep="")
             cat("\t", nrow(exprs(object)), " probe(s) on the sequence\n", sep="")
-              cat(spliceSites(object))
+            show(spliceSites(object))
           })
 
 
