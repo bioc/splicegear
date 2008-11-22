@@ -1,0 +1,5 @@
+
+importFrom("Biobase", "exprs<-")
+importFrom("Biobase", "exprs")
+
+exportPattern("^[^\\.]")
