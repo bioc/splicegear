@@ -12,7 +12,7 @@
   \item{x}{ \code{SpliceSitesGenomic-class} }
   \item{col.variant}{ a vector of colors for the different variants. The
     colors are recycled as necessary.}
-  \item{col.exon} { a vector of colors for the exons. The
+  \item{col.exon}{ a vector of colors for the exons. The
     colors are recycled as necessary.}
   \item{split}{ split the plot of the variants in individual plots}
   \item{main}{\code{character} to use as a title. Recycled as necessary.}
