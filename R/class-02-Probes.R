@@ -54,8 +54,8 @@ setMethod("plot",
                  xlim=xlim, ylim=ylim,
                  type="n", ...)
             
-            do.call("plot.SpliceSites", c(list(y, add=TRUE, ylim=ylim), spsites.opt))
-            p.ylim <- do.call("plot.Probes",
+            do.call(plot.SpliceSites, c(list(y, add=TRUE, ylim=ylim), spsites.opt))
+            p.ylim <- do.call(plot.Probes,
                               c(list(x, xlim=c(0, y@seq.length), add=TRUE, probepos.yscale = probepos.yscale),
                                 probes.opt))
             
@@ -120,15 +120,15 @@ setMethod("grid.plot",
 
             ##spliceSites
             panel.vp <- viewport(layout.pos.row = 2, layout.pos.col = 1)
-            do.call("grid.plot", c(list(y, add=TRUE, ylim=ylim, vp=panel.vp), spsites.opt))
+            do.call(grid.plot, c(list(y, add=TRUE, ylim=ylim, vp=panel.vp), spsites.opt))
             ##probes
             panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 1)
             ## trick to have the background:
             spsites.opt.hack <- spsites.opt
             spsites.opt.hack$col.typeI <- 0
-            do.call("grid.plot", c(list(y, add=TRUE, ylim=ylim, vp=panel.vp),
+            do.call(grid.plot, c(list(y, add=TRUE, ylim=ylim, vp=panel.vp),
                                    spsites.opt.hack))
-            p.ylim <- do.call("grid.plot",
+            p.ylim <- do.call(grid.plot,
                               c(list(x, xlim=c(0, y@seq.length), add=TRUE, vp=panel.vp,
                                      probepos.yscale = probepos.yscale),
                                 probes.opt))

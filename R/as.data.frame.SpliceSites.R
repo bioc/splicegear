@@ -20,7 +20,7 @@ as.data.frame.SpliceSites <- function(x, row.names=NA, optional=NA, ...) {
     m <- merge(pdat.I, pdat.II, by.x = c(0, seq(along=pdat.I)), by.y = c(0, seq(along=pdat.II)), all = TRUE)
   }
 
-  rv <- do.call("data.frame", c(list(begin = c(x@spsiteIpos[, 1], x@spsiteIIpos),
+  rv <- do.call(data.frame, c(list(begin = c(x@spsiteIpos[, 1], x@spsiteIIpos),
                                      end = c(x@spsiteIpos[, 2], rep(NA, nr.typeII)),
                                      lapply(m, function(x) {x})
                                      ))

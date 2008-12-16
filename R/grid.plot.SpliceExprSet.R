@@ -28,7 +28,7 @@ grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
   grid.plot(spSites, vp=panel.vp, add=TRUE)
   
   panel.vp <- viewport(layout.pos.row = 1, layout.pos.col = 1)
-  ylim <- do.call("grid.plot", c(list(probes, xlim=c(0, spSites@seq.length), vp=panel.vp, add=TRUE),
+  ylim <- do.call(grid.plot, c(list(probes, xlim=c(0, spSites@seq.length), vp=panel.vp, add=TRUE),
                                  probes.opt))
   
   
@@ -76,7 +76,7 @@ grid.plot.SpliceExprSet <- function(x, probes.opt = list(),
   
   return()
   
-  do.call("matplot", c(list(exprs(eset), matrix(ypos, ncol=1),
+  do.call(matplot, c(list(exprs(eset), matrix(ypos, ncol=1),
                             ylim=ylim,
                             xlab="expression", ylab="probes",
                             type="l"), expr.opt))

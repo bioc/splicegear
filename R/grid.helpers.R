@@ -44,7 +44,7 @@ grid.expand.gp <- function(n, parlist=list()) {
   gp <- vector("list", length=n)
   parlist <- lapply(parlist, function(x) rep(x, length=n))
   for (i in seq(1, n, length=n)) {
-    gp[[i]] <- do.call("gpar", lapply(parlist, function(x) x[i]))
+    gp[[i]] <- do.call(gpar, lapply(parlist, function(x) x[i]))
   }
   return(gp)
 }

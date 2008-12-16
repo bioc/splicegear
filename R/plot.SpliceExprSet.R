@@ -48,7 +48,7 @@ plot.SpliceExprSet <- function(x, probes.opt = list(),
   ##ylim <- range(ylim, ylim[1] - 1/4 * (ylim[2] - ylim[1]))
   xlim <- c(0, spSites@seq.length)
 
-  do.call("matplot", c(list(exprs(eset), matrix(ypos, ncol=1),
+  do.call(matplot, c(list(exprs(eset), matrix(ypos, ncol=1),
                             ylim=m.ylim,
                             xlab="expression", ylab="probes",
                             type="l"), expr.opt))
