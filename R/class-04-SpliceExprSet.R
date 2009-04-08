@@ -3,8 +3,6 @@
 
 ## classe to describe splice variants w/ expression values
 ##
-require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
-
 setClass("SpliceExprSet",
          representation(spliceSites="SpliceSites",
                         probes = "Probes",

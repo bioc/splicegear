@@ -1,5 +1,29 @@
+importClassesFrom(Biobase, AnnotatedDataFrame, ExpressionSet)
 
-importFrom("Biobase", "exprs<-")
-importFrom("Biobase", "exprs")
+importClassesFrom(methods, ANY, character, data.frame, integer, list,
+                  matrix, missing)
+
+importMethodsFrom(Biobase, exprs, "exprs<-", pData, "pData<-")
+
+importMethodsFrom(methods, show)
+
+importFrom(annotate, .handleXML)
+
+importFrom(Biobase, addVigs2WinMenu)
+
+importFrom(graphics, abline, barplot, layout, matplot, par, plot,
+           plot.new, plot.window, rect, segments, title)
+
+importFrom(grDevices, rainbow)
+
+importFrom(grid, gpar, grid.layout, grid.lines, grid.newpage,
+           grid.rect, grid.segments, grid.xaxis, popViewport,
+           pushViewport, viewport)
+
+importFrom(methods, "@<-", is, new)
+
+importFrom(utils, browseURL)
+
+importFrom(XML, xmlAttrs, xmlChildren)
 
 exportPattern("^[^\\.]")

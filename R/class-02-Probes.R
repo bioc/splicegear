@@ -1,19 +1,13 @@
 ## This class could be useful in the pack matchprobes too...
 
 setClass("Probes",
-         representation(pos="matrix", info="data.frame"))
-
-
-setMethod("initialize", "Probes",
-          function(.Object, pos, info=NULL) {
-            .Object@pos <- pos
-            if (! is.null(info)) {
-              if (nrow(pos) != nrow(info))
-                stop("length mismatch between 'pos' and 'info'.")
-              .Object@info <- info
-            }
-            return(.Object)
-          })
+         representation(pos="matrix", info="data.frame"),
+         validity = function(object) {
+           if (nrow(object@pos) != nrow(object@info))
+             "length mismatch between 'pos' and 'info'."
+           else
+             TRUE
+         })
 
 setMethod("show", "Probes",
           function(object) {

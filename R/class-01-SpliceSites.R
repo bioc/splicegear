@@ -1,6 +1,3 @@
-require(Biobase, quietly=TRUE) || stop("Could not load the package 'Biobase'")
-
-  
 setClass("SpliceSites",
          representation(
                         seq = "character",   # the genomic sequence (if available)
@@ -40,32 +37,6 @@ setMethod("plot",
           function(x, ...) {
               plot.SpliceSites(x, ...)
             })
-
-
-setMethod("initialize", "SpliceSites",
-          function(.Object, 
-                   seq = "", seq.length = as.integer(-1),
-                   spsiteIpos = matrix(0, 0, 0),
-                   spsiteIIpos = integer(0),
-                   spsiteIIIpos = matrix(0, 0, 0),
-                   spsiteIpos.pData = new("AnnotatedDataFrame"),
-                   spsiteIIpos.pData = new("AnnotatedDataFrame"),
-                   spsiteIIIpos.pData = new("AnnotatedDataFrame"),
-                   ...)
-          {
-            if (seq == "" && seq.length == -1)
-              stop("'seq' or 'seq.length' must be defined.")
-            .Object <- callNextMethod()
-            .Object@seq = seq
-            .Object@seq.length = seq.length
-            .Object@spsiteIpos = spsiteIpos
-            .Object@spsiteIIpos = spsiteIIpos
-            .Object@spsiteIIIpos = spsiteIIIpos
-            .Object@spsiteIpos.pData = spsiteIpos.pData
-            .Object@spsiteIIpos.pData = spsiteIIpos.pData
-            .Object@spsiteIIIpos.pData = spsiteIIIpos.pData
-            return(.Object)
-          })
 
 
 if( !isGeneric("grid.plot") )

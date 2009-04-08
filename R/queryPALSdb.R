@@ -4,8 +4,6 @@ getPALSdbURL <- function(query, disp = c("data", "browser"),
                         species = c("human", "mouse"),
                         e.value = "1e-1",
                         ident.threshold = c("90% 50b", "95% 50b", "90% 45b")) {
-
-  require(annotate, quietly=TRUE) || stop()
   
   url.base <- "http://palsdb.ym.edu.tw/cgi-bin/palsdb/big_xml.cgi"
   ##url.base <- "http://140.129.151.155/~laurent/cgi-bin/palsdb/big_xml.cgi"
@@ -63,7 +61,6 @@ queryPALSdb <- function(query, disp = c("data", "browser"),
                       ident.threshold = ident.threshold)
   
   if (disp == "data") {
-    require(XML, quietly=TRUE) || stop("Library XML required !")
     return(.handleXML(url))
     ##return(paste(readLines(url(url)), collapse=""))
   }
