@@ -16,7 +16,7 @@
   \item{probes.opt}{ optional parameters to be passed for the plotting of
     the \code{\link{Probes-class}} }
   \item{expr.opt}{ optional parameters to be passed for the plotting of
-    the \code{\link[Biobase]{ExpressionSet-class}} }
+    the \code{\link[Biobase:class.ExpressionSet]{ExpressionSet-class}} }
   \item{fig.xratio}{ ratio between the left and right parts of the plot }
   \item{fig.yratio}{ ratio between the upper and lower parts of the plot }
   \item{probepos.yscale}{ enforce `y' positions for the probes. }

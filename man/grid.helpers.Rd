@@ -24,7 +24,7 @@ grid.make.numeric2npc(x, xlim=NULL, lower.blank=0, upper.blank=0)
 \value{
   Function used for its side effect.
 }
-\seealso{ \code{\link[grid]{lattice}}
+\seealso{ \code{\link[lattice:Lattice]{lattice}}
 }
 \keyword{ hplot }
 

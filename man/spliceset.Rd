@@ -17,7 +17,8 @@
 #data(spliceset, package="splicegear")
 }
 \format{
-  The formats are objects of class \code{\link[Biobase]{ExpressionSet-class}},
+  The formats are objects of class
+  \code{\link[Biobase:class.ExpressionSet]{ExpressionSet-class}}, 
   \code{\link{Probes-class}}, \code{\link{SpliceSites-class}} and
   \code{\link{SpliceExprSet-class}} respectively.
 }

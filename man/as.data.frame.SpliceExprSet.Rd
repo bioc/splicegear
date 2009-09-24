@@ -26,8 +26,10 @@
 A \code{data.frame}. For both functions the first column names are \code{begin},
 \code{end}, \code{isintypeI}, \code{isintypeII}, \code{exprs} and \code{genenames}.
 In the case of \code{as.data.frame.SpliceExprSet}, the next variable names will the ones in the
-\code{\link[Biobase]{AnnotatedDataFrame-class}} attribute of the
-\code{\link[Biobase]{ExpressionSet-class}} object belonging the
+\code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame-class}}
+attribute of the 
+\code{\link[Biobase:class.ExpressionSet]{ExpressionSet-class}} object
+belonging the 
 \code{\link{SpliceExprSet-class}}. The last variable names will be the
 ones in the slot \code{info} of the \code{\link{Probes-class}} object.
 }
