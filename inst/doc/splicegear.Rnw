@@ -1,3 +1,4 @@
+
 % -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
 %\VignetteIndexEntry{splicegear Introduction}
 %\VignetteDepends{splicegear, Biobase}
@@ -116,7 +117,7 @@ The XML can be stored in a file. In {\bf R}, one can make an object of
 class \Rclass{xml} very easily:
 <<>>=
 library(XML)
-filename <- system.file("data", "example.xml", package="splicegear")
+filename <- system.file("extdata", "example.xml", package="splicegear")
 xml <- xmlTreeParse(filename, asTree=TRUE)
 @
 Further details concerning XML handling can be found in the documentation
@@ -149,7 +150,7 @@ We only introduce here a detailed example of can be performed.
 <<>>=
 ## build SpliceSites
 library(XML)
-filename <- system.file("data", "example.xml", package="splicegear")
+filename <- system.file("extdata", "example.xml", package="splicegear")
 xml <- xmlTreeParse(filename, asTree=TRUE)
 spsites <- buildSpliceSites(xml, verbose=FALSE)
 

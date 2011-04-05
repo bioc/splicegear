@@ -14,30 +14,36 @@ Objects can be created by calls of the form \code{new("SpliceSites", ...)}.
 }
 \section{Slots}{
   \describe{
-    \item{\code{probepos}:}{Object of class \code{"matrix"}. A two-columns
-      matrix to store the begin and end positions of probes (one row per
-      probe).}
+    %\item{\code{probepos}:}{Object of class \code{"matrix"}. A two-columns
+    %  matrix to store the begin and end positions of probes (one row per
+    %  probe).}
     \item{\code{seq}:}{Object of class \code{"character"}. The reference
       sequence.}
+    
     \item{\code{seq.length}:}{Object of class \code{"integer"}. The length for
       the reference sequence (used when the slot \code{seq} is set to
       \code{""}).}
+    
     \item{\code{spsiteIpos}:}{Object of class \code{"matrix"}. A
       two-columns
-      matrix to store the begin and end positions of type I splice variant.}
+      matrix to store the begin and end positions of type I splice
+      variant.}
+    
     \item{\code{spsiteIIpos}:}{Object of class \code{"integer"}. A
       vector to store the positions for type II splice variants.}
+    
     \item{\code{spsiteIIIpos}:}{Object of class \code{"matrix"}. Idem
-      \code{spsiteIpos}, but for type III splice variants.
-    }
+      \code{spsiteIpos}, but for type III splice variants.}
+    
     \item{\code{spsiteIpos.pData}:}{Object of class
       \code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame}}. Used
-      to store covariate 
-      information related to the splice variants}.
+      to store covariate information related to the splice variants.}
+    
     \item{\code{spsiteIIpos.pData}:}{Object of class
-      \code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame}}}.
+      \code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame}}.}
+    
     \item{\code{spsiteIIIpos.pData}:}{Object of class
-      \code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame}}}.  
+      \code{\link[Biobase:class.AnnotatedDataFrame]{AnnotatedDataFrame}}.}  
   }
 }
 \section{Methods}{

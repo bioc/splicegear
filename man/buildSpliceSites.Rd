@@ -57,7 +57,7 @@ in preparation.}
 \examples{
 library(XML)
 
-filename <- system.file("data", "example.xml", package="splicegear")
+filename <- system.file("extdata", "example.xml", package="splicegear")
 
 xml <- xmlTreeParse(filename, asTree=TRUE)
 
