@@ -20,7 +20,7 @@ importFrom(grid, gpar, grid.layout, grid.lines, grid.newpage,
            grid.rect, grid.segments, grid.xaxis, popViewport,
            pushViewport, viewport)
 
-importFrom(methods, "@<-", is, new)
+importFrom(methods, is, new)
 
 importFrom(utils, browseURL)
 
