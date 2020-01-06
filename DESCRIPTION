@@ -1,6 +1,6 @@
 Package: splicegear
 Title: splicegear
-Version: 1.59.0
+Version: 1.59.1
 Author: Laurent Gautier <laurent@cbs.dtu.dk>
 Description: A set of tools to work with alternative splicing
 Maintainer: Laurent Gautier <laurent@cbs.dtu.dk>
@@ -9,3 +9,4 @@ Depends: R (>= 2.6.0), methods, Biobase(>= 2.5.5)
 Imports: annotate, Biobase, graphics, grDevices, grid, methods, utils, XML
 LazyLoad: yes
 biocViews: Infrastructure, Transcription
+PackageStatus: Deprecated
